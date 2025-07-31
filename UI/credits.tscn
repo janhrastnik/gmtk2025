@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl3x5nnwsi5tv"]
+
+[ext_resource type="Script" uid="uid://x27xup5k0b5q" path="res://UI/credits.gd" id="1_ng644"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ng644")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.17185, 0.359442, 0.440113, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 192.0
+offset_right = 619.0
+offset_bottom = 261.0
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 384.0
+offset_right = 642.0
+offset_bottom = 447.0
+theme_override_font_sizes/font_size = 40
+text = "Main Menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
