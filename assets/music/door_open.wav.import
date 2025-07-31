@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bvg44hsb3fu35"
-path="res://.godot/imported/jump.wav-218cd83dc507dd859b4cc6b7428d50d9.sample"
+uid="uid://c30bv0myxjsge"
+path="res://.godot/imported/door_open.wav-a7de36f5b2a45c04f53e0275c14f2540.sample"
 
 [deps]
 
-source_file="res://assets/music/jump.wav"
-dest_files=["res://.godot/imported/jump.wav-218cd83dc507dd859b4cc6b7428d50d9.sample"]
+source_file="res://assets/music/door_open.wav"
+dest_files=["res://.godot/imported/door_open.wav-a7de36f5b2a45c04f53e0275c14f2540.sample"]
 
 [params]
 
