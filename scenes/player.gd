@@ -6,7 +6,6 @@ var can_move_down = true
 var can_move_left = true
 var can_move_right = true
 
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("up") and can_move_up:
 		position.y -= 12
