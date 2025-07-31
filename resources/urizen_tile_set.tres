@@ -1,0 +1,19 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cded1nikcxtrf"]
+
+[ext_resource type="Texture2D" uid="uid://5gq4krkq15gl" path="res://assets/walls_animals_objects.png" id="1_5vehd"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r5h3a"]
+texture = ExtResource("1_5vehd")
+margins = Vector2i(1, 1)
+separation = Vector2i(1, 1)
+texture_region_size = Vector2i(12, 12)
+9:7/0 = 0
+0:3/0 = 0
+0:3/0/custom_data_0 = true
+1:5/0 = 0
+
+[resource]
+tile_size = Vector2i(12, 12)
+custom_data_layer_0/name = "is_colliding"
+custom_data_layer_0/type = 1
+sources/1 = SubResource("TileSetAtlasSource_r5h3a")
