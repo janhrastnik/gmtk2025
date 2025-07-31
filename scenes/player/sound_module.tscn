@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx7m54ote1amk"]
+
+[ext_resource type="Script" uid="uid://cv61iam8ge2y6" path="res://scenes/player/sound_module.gd" id="1_f1l56"]
+
+[node name="SoundModule" type="Node"]
+script = ExtResource("1_f1l56")
+
+[node name="StepSound" type="AudioStreamPlayer" parent="."]

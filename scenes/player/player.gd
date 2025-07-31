@@ -8,6 +8,7 @@ var can_move_right = true
 
 var starting_level_position = Vector2.ZERO
 @export var starting_loop_position: Vector2 = Vector2.ZERO
+@onready var sound_module = $SoundModule
 
 var current_level = "gate_demo"
 
@@ -39,11 +40,13 @@ func _input(event: InputEvent) -> void:
 			object_up.move_rock(self)
 		else:
 			# normal move
+			sound_module.play_step_sound()
 			position.y -= 12
 	elif event.is_action_pressed("down") and can_move_down:
 		if object_down is Rock:
 			object_down.move_rock(self)
 		else:
+			sound_module.play_step_sound()
 			position.y += 12
 	elif event.is_action_pressed("left") and can_move_left:
 		sprite.flip_h = true
@@ -51,6 +54,7 @@ func _input(event: InputEvent) -> void:
 		if object_left is Rock:
 			object_left.move_rock(self)
 		else:
+			sound_module.play_step_sound()
 			position.x -= 12
 	elif event.is_action_pressed("right") and can_move_right:
 		sprite.flip_h = false
@@ -58,6 +62,7 @@ func _input(event: InputEvent) -> void:
 		if object_right is Rock:
 			object_right.move_rock(self)
 		else:
+			sound_module.play_step_sound()
 			position.x += 12
 	
 	if event.is_action_pressed("reset"):
