@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=4 uid="uid://d4fdepgl88d81"]
+[gd_scene load_steps=9 format=4 uid="uid://d4fdepgl88d81"]
 
 [ext_resource type="Script" uid="uid://c6nfarag0xpsa" path="res://scenes/map_test.gd" id="1_o4b1t"]
 [ext_resource type="TileSet" uid="uid://cded1nikcxtrf" path="res://resources/urizen_tile_set.tres" id="1_y150f"]
 [ext_resource type="PackedScene" uid="uid://dc3m1hfr3sfhn" path="res://scenes/player.tscn" id="2_x5nem"]
-[ext_resource type="PackedScene" uid="uid://c5rrr35f37eov" path="res://scenes/interactable/rock.tscn" id="4_g3f5c"]
+[ext_resource type="PackedScene" uid="uid://c5rrr35f37eov" path="res://scenes/interactable/reset_rock.tscn" id="4_g3f5c"]
 [ext_resource type="PackedScene" uid="uid://8pcpw4gfbki3" path="res://scenes/unlockable/gate_one_req.tscn" id="5_3p1co"]
-[ext_resource type="PackedScene" uid="uid://cydpl45ysvfqy" path="res://scenes/interactable/pressure_plate.tscn" id="6_6nkdi"]
+[ext_resource type="PackedScene" uid="uid://cydpl45ysvfqy" path="res://scenes/interactable/reset_pressure_plate.tscn" id="6_6nkdi"]
+[ext_resource type="PackedScene" uid="uid://ycegeiop4h6x" path="res://scenes/interactable/loop_rock.tscn" id="7_b3oat"]
+[ext_resource type="PackedScene" uid="uid://bbsk6tnse7wvv" path="res://scenes/interactable/loop_pressure_plate.tscn" id="8_t5yh1"]
 
 [node name="Map Test" type="Node2D"]
 script = ExtResource("1_o4b1t")
@@ -17,14 +19,31 @@ tile_set = ExtResource("1_y150f")
 [node name="Player" parent="." instance=ExtResource("2_x5nem")]
 z_index = 1
 position = Vector2(36, 36)
+starting_loop_position = Vector2(48, 48)
 
-[node name="Reset Rock" parent="." instance=ExtResource("4_g3f5c")]
+[node name="Demo Level" type="Node" parent="."]
+
+[node name="Reset Rock" parent="Demo Level" instance=ExtResource("4_g3f5c")]
 position = Vector2(84, 36)
+level_name = "gate_demo"
 
-[node name="GateOneReq" parent="." instance=ExtResource("5_3p1co")]
+[node name="GateOneReq - Reset" parent="Demo Level" instance=ExtResource("5_3p1co")]
 position = Vector2(120, 60)
-event_name = "gate_demo"
+event_name = "reset_gate"
+level_name = "gate_demo"
 
-[node name="PressurePlate" parent="." instance=ExtResource("6_6nkdi")]
+[node name="ResetPressurePlate" parent="Demo Level" instance=ExtResource("6_6nkdi")]
 position = Vector2(84, 60)
-event_name = "gate_demo"
+event_name = "reset_gate"
+
+[node name="LoopRock" parent="Demo Level" instance=ExtResource("7_b3oat")]
+position = Vector2(60, 36)
+
+[node name="LoopPressurePlate" parent="Demo Level" instance=ExtResource("8_t5yh1")]
+position = Vector2(60, 60)
+event_name = "loop_gate"
+
+[node name="GateOneReq - Loop" parent="Demo Level" instance=ExtResource("5_3p1co")]
+position = Vector2(120, 24)
+event_name = "loop_gate"
+level_name = "gate_demo"

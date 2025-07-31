@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5rrr35f37eov"]
 
 [ext_resource type="Texture2D" uid="uid://digo1nf3h82io" path="res://assets/reset_rock.png" id="1_j4skb"]
-[ext_resource type="Script" uid="uid://bqwk7qpatfk8" path="res://scenes/interactable/rock.gd" id="1_toq3j"]
+[ext_resource type="Script" uid="uid://bqwk7qpatfk8" path="res://scenes/interactable/reset_rock.gd" id="1_toq3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_toq3j"]
 size = Vector2(10, 10)

@@ -7,6 +7,9 @@ var can_move_left = true
 var can_move_right = true
 
 var starting_level_position = Vector2.ZERO
+@export var starting_loop_position: Vector2 = Vector2.ZERO
+
+var current_level = "gate_demo"
 
 # references to objects player can interact with
 var object_up = false
@@ -28,6 +31,7 @@ func _ready() -> void:
 	debug_ui.visible = true
 	
 	GameData.reset_events.connect(reset_player)
+	GameData.loop_events.connect(loopback_player)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("up") and can_move_up:
@@ -57,7 +61,7 @@ func _input(event: InputEvent) -> void:
 			position.x += 12
 	
 	if event.is_action_pressed("reset"):
-		GameData.reset_events.emit()
+		GameData.reset_events.emit(current_level)
 	
 	if event.is_action_pressed("loop"):
 		GameData.loop_events.emit()
@@ -119,5 +123,8 @@ func check_for_objects():
 			#print("object on the right")
 			object_right = parent
 
-func reset_player():
+func reset_player(level_name):
 	position = starting_level_position
+
+func loopback_player():
+	position = starting_loop_position

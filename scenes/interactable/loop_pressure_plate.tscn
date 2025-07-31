@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbsk6tnse7wvv"]
+
+[ext_resource type="Script" uid="uid://bpdqayv1hiou0" path="res://scenes/interactable/loop_pressure_plate.gd" id="1_it4af"]
+[ext_resource type="Texture2D" uid="uid://cbjee4w11sfol" path="res://assets/loop_pressure_plate.png" id="1_m7fmp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7fmp"]
+size = Vector2(10, 10)
+
+[node name="LoopPressurePlate" type="Node2D"]
+script = ExtResource("1_it4af")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_m7fmp")
+offset = Vector2(6, 6)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(6, 6)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_m7fmp")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

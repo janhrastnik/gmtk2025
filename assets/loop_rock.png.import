@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d15tvjlu3axh4"
-path="res://.godot/imported/pressure_plate.png-2de61bb804cd81e313f90dbbdea1dfb2.ctex"
+uid="uid://rd5qdfsig17d"
+path="res://.godot/imported/loop_rock.png-f10b571db1ee75f563bbd829f4cacc6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pressure_plate.png"
-dest_files=["res://.godot/imported/pressure_plate.png-2de61bb804cd81e313f90dbbdea1dfb2.ctex"]
+source_file="res://assets/loop_rock.png"
+dest_files=["res://.godot/imported/loop_rock.png-f10b571db1ee75f563bbd829f4cacc6d.ctex"]
 
 [params]
 
