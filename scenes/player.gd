@@ -13,6 +13,7 @@ var object_left = false
 var object_right = false
 
 @onready var object_detect_area: Area2D = $"Object Detect"
+@onready var sprite: Sprite2D = $Sprite2D
 
 func _ready() -> void:
 	check_collisions()
@@ -30,11 +31,15 @@ func _input(event: InputEvent) -> void:
 		else:
 			position.y += 12
 	elif event.is_action_pressed("left") and can_move_left:
+		sprite.flip_h = true
+		
 		if object_left is Rock:
 			object_left.move_rock(self)
 		else:
 			position.x -= 12
 	elif event.is_action_pressed("right") and can_move_right:
+		sprite.flip_h = false
+		
 		if object_right is Rock:
 			object_right.move_rock(self)
 		else:
@@ -94,5 +99,5 @@ func check_for_objects():
 		elif parent.position == position - Vector2(12.0, 0):
 			object_left = parent
 		elif parent.position == position + Vector2(12.0, 0):
-			print("object on the right")
+			#print("object on the right")
 			object_right = parent

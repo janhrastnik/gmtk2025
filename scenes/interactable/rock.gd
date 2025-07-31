@@ -6,6 +6,8 @@ var can_move_down = true
 var can_move_left = true
 var can_move_right = true
 
+@export var level_name: String = ""
+
 func _ready() -> void:
 	check_collisions()
 

@@ -1,9 +1,16 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cded1nikcxtrf"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cded1nikcxtrf"]
 
-[ext_resource type="Texture2D" uid="uid://5gq4krkq15gl" path="res://assets/walls_animals_objects.png" id="1_5vehd"]
+[ext_resource type="Texture2D" uid="uid://cfdgepsjcnfme" path="res://assets/tilesets/misc_objects.png" id="1_r5h3a"]
+[ext_resource type="Texture2D" uid="uid://5gq4krkq15gl" path="res://assets/tilesets/walls_animals_objects.png" id="2_k66yg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k66yg"]
+texture = ExtResource("1_r5h3a")
+margins = Vector2i(1, 1)
+separation = Vector2i(1, 1)
+texture_region_size = Vector2i(12, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r5h3a"]
-texture = ExtResource("1_5vehd")
+texture = ExtResource("2_k66yg")
 margins = Vector2i(1, 1)
 separation = Vector2i(1, 1)
 texture_region_size = Vector2i(12, 12)
@@ -17,3 +24,4 @@ tile_size = Vector2i(12, 12)
 custom_data_layer_0/name = "is_colliding"
 custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_r5h3a")
+sources/0 = SubResource("TileSetAtlasSource_k66yg")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2iyljuedaxnx"
-path="res://.godot/imported/scifi.png-97956e3627572035bbde7942989bb1a5.ctex"
+uid="uid://d15tvjlu3axh4"
+path="res://.godot/imported/pressure_plate.png-2de61bb804cd81e313f90dbbdea1dfb2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scifi.png"
-dest_files=["res://.godot/imported/scifi.png-97956e3627572035bbde7942989bb1a5.ctex"]
+source_file="res://assets/pressure_plate.png"
+dest_files=["res://.godot/imported/pressure_plate.png-2de61bb804cd81e313f90dbbdea1dfb2.ctex"]
 
 [params]
 
