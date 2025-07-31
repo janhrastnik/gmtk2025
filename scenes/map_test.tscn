@@ -18,14 +18,12 @@ tile_set = ExtResource("1_y150f")
 z_index = 1
 position = Vector2(36, 36)
 
-[node name="Rock" parent="." instance=ExtResource("4_g3f5c")]
+[node name="Reset Rock" parent="." instance=ExtResource("4_g3f5c")]
 position = Vector2(84, 36)
-level = "demo_lvl"
 
 [node name="GateOneReq" parent="." instance=ExtResource("5_3p1co")]
 position = Vector2(120, 60)
 event_name = "gate_demo"
-level = "demo_lvl"
 
 [node name="PressurePlate" parent="." instance=ExtResource("6_6nkdi")]
 position = Vector2(84, 60)

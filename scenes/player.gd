@@ -6,6 +6,8 @@ var can_move_down = true
 var can_move_left = true
 var can_move_right = true
 
+var starting_level_position = Vector2.ZERO
+
 # references to objects player can interact with
 var object_up = false
 var object_down = false
@@ -14,9 +16,18 @@ var object_right = false
 
 @onready var object_detect_area: Area2D = $"Object Detect"
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var debug_ui: CanvasLayer = $"Debug UI"
 
 func _ready() -> void:
 	check_collisions()
+	
+	# change this when switching levels
+	starting_level_position = position
+	
+	# debug mode
+	debug_ui.visible = true
+	
+	GameData.reset_events.connect(reset_player)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("up") and can_move_up:
@@ -44,6 +55,12 @@ func _input(event: InputEvent) -> void:
 			object_right.move_rock(self)
 		else:
 			position.x += 12
+	
+	if event.is_action_pressed("reset"):
+		GameData.reset_events.emit()
+	
+	if event.is_action_pressed("loop"):
+		GameData.loop_events.emit()
 
 	check_collisions()
 	check_for_objects()
@@ -101,3 +118,6 @@ func check_for_objects():
 		elif parent.position == position + Vector2(12.0, 0):
 			#print("object on the right")
 			object_right = parent
+
+func reset_player():
+	position = starting_level_position

@@ -8,8 +8,15 @@ var can_move_right = true
 
 @export var level_name: String = ""
 
+var starting_position: Vector2 = Vector2.ZERO
+
 func _ready() -> void:
 	check_collisions()
+	
+	starting_position = position
+	
+	GameData.reset_events.connect(reset_state)
+	#GameData.loop_events.connect(reset_state)
 
 func move_rock(pl: Player):
 	print("move rock call")
@@ -62,3 +69,7 @@ func check_collisions():
 				can_move_right = false
 			else:
 				can_move_right = true
+
+func reset_state(level = ""):
+	if level_name == level:
+		position = starting_position

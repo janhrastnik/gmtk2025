@@ -32,6 +32,6 @@ func toggle_gate():
 		GameData.world_tilemap.set_cell(gate_coords, 1, Vector2i(0, 3), 0)
 	else:
 		# set the cell in the background to an empty one
-		GameData.world_tilemap.set_cell(gate_coords, -1, Vector2i(-1, -1), -1)
+		GameData.world_tilemap.set_cell(gate_coords, 1, Vector2i(9, 7), 0)
 
 	
