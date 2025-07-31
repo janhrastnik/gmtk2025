@@ -1,5 +1,4 @@
 class_name ResetPressurePlate
-
 extends PressurePlate
 
 @export var event_name = ""
