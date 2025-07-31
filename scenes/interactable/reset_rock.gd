@@ -24,15 +24,19 @@ func move_rock(pl: Player):
 		# player is below rock
 		position -= Vector2(0, 12.0)
 		pl.position -= Vector2(0, 12.0)
+		$AudioStreamPlayer.play()
 	elif position == pl.position + Vector2(0, 12.0) and can_move_down:
 		position += Vector2(0, 12.0)
 		pl.position += Vector2(0, 12.0)
+		$AudioStreamPlayer.play()
 	elif position == pl.position - Vector2(12.0, 0) and can_move_left:
 		position -= Vector2(12.0, 0)
 		pl.position -= Vector2(12.0, 0)
+		$AudioStreamPlayer.play()
 	elif position == pl.position + Vector2(12.0, 0) and can_move_right:
 		position += Vector2(12.0, 0)
 		pl.position += Vector2(12.0, 0)
+		$AudioStreamPlayer.play()
 	
 	check_collisions()
 

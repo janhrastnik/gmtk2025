@@ -19,9 +19,11 @@ func gate_check(received_event_name: String):
 		
 		if is_closed:
 			sprite.animation = "closed"
+			print("Open")
 		else:
 			sprite.animation = "open"
-		
+			$AudioStreamPlayer.play()
+			
 		toggle_gate()
 
 func toggle_gate():

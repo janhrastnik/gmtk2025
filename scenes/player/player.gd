@@ -50,13 +50,13 @@ func _physics_process(delta: float) -> void:
 		else:
 			# normal move
 			position.y -= 12
-			move_event()
+		step_timer.start()
 	elif Input.is_action_pressed("down") and can_move_down:
 		if object_down is Rock:
 			object_down.move_rock(self)
 		else:
 			position.y += 12
-			move_event()
+		step_timer.start()
 	elif Input.is_action_pressed("left") and can_move_left:
 		sprite.flip_h = true
 		
@@ -64,7 +64,7 @@ func _physics_process(delta: float) -> void:
 			object_left.move_rock(self)
 		else:
 			position.x -= 12
-			move_event()
+		step_timer.start()
 	elif Input.is_action_pressed("right") and can_move_right:
 		sprite.flip_h = false
 		
@@ -72,11 +72,10 @@ func _physics_process(delta: float) -> void:
 			object_right.move_rock(self)
 		else:
 			position.x += 12
-			move_event()
+		step_timer.start()
 
 func move_event():
 	sound_module.play_step_sound()
-	step_timer.start()
 
 	check_collisions()
 	check_for_objects()
@@ -88,6 +87,9 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("loop"):
 		GameData.loop_events.emit()
+
+	if Input.get_vector("up", "down", "left", "right") != Vector2.ZERO:
+		move_event() 
 
 func check_collisions():
 	if GameData.world_tilemap:
@@ -128,11 +130,11 @@ func check_for_objects():
 	object_down = false
 	object_left = false
 	object_right = false
+	
 
 	for area in object_detect_area.get_overlapping_areas():
-		#print(position)
 		var parent: Node2D = area.get_parent()
-		#print(parent.position)
+		
 		if parent.position == position - Vector2(0, 12.0):
 			object_up = parent
 		elif parent.position == position + Vector2(0, 12.0):
@@ -140,7 +142,6 @@ func check_for_objects():
 		elif parent.position == position - Vector2(12.0, 0):
 			object_left = parent
 		elif parent.position == position + Vector2(12.0, 0):
-			#print("object on the right")
 			object_right = parent
 
 func reset_player(level_name):
