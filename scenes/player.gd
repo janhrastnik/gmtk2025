@@ -6,15 +6,37 @@ var can_move_down = true
 var can_move_left = true
 var can_move_right = true
 
+# references to objects player can interact with
+var object_up = false
+var object_down = false
+var object_left = false
+var object_right = false
+
+func _ready() -> void:
+	check_collisions()
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("up") and can_move_up:
-		position.y -= 12
+		if object_up is Rock:
+			object_up.move_rock(self)
+		else:
+			# normal move
+			position.y -= 12
 	elif event.is_action_pressed("down") and can_move_down:
-		position.y += 12
+		if object_down is Rock:
+			object_down.move_rock(self)
+		else:
+			position.y += 12
 	elif event.is_action_pressed("left") and can_move_left:
-		position.x -= 12
+		if object_left is Rock:
+			object_left.move_rock(self)
+		else:
+			position.x -= 12
 	elif event.is_action_pressed("right") and can_move_right:
-		position.x += 12
+		if object_right is Rock:
+			object_right.move_rock(self)
+		else:
+			position.x += 12
 
 	check_collisions()
 
@@ -51,3 +73,14 @@ func check_collisions():
 				can_move_right = false
 			else:
 				can_move_right = true
+
+func _on_object_detect_area_entered(area: Area2D) -> void:
+	var parent: Node2D = area.get_parent()
+	if parent.position == position - Vector2(0, 12.0):
+		object_up = parent
+	elif parent.position == position + Vector2(0, 12.0):
+		object_down = parent
+	elif parent.position == position - Vector2(12.0, 0):
+		object_left = parent
+	elif parent.position == position + Vector2(12.0, 0):
+		object_right = parent
