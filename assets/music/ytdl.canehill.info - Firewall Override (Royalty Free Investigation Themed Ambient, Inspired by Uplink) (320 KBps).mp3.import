@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bc8xdsydnkjwb"
+path="res://.godot/imported/ytdl.canehill.info - Firewall Override (Royalty Free Investigation Themed Ambient, Inspired by Uplink) (320 KBps).mp3-f842735c8823f48b4aaffe280c97b103.mp3str"
+
+[deps]
+
+source_file="res://assets/music/ytdl.canehill.info - Firewall Override (Royalty Free Investigation Themed Ambient, Inspired by Uplink) (320 KBps).mp3"
+dest_files=["res://.godot/imported/ytdl.canehill.info - Firewall Override (Royalty Free Investigation Themed Ambient, Inspired by Uplink) (320 KBps).mp3-f842735c8823f48b4aaffe280c97b103.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
