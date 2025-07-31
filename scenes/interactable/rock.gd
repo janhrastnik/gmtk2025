@@ -10,7 +10,22 @@ func _ready() -> void:
 	check_collisions()
 
 func move_rock(pl: Player):
-	pass
+	print("move rock call")
+	if position == pl.position - Vector2(0, 12.0) and can_move_up:
+		# player is below rock
+		position -= Vector2(0, 12.0)
+		pl.position -= Vector2(0, 12.0)
+	elif position == pl.position + Vector2(0, 12.0) and can_move_down:
+		position += Vector2(0, 12.0)
+		pl.position += Vector2(0, 12.0)
+	elif position == pl.position - Vector2(12.0, 0) and can_move_left:
+		position -= Vector2(12.0, 0)
+		pl.position -= Vector2(12.0, 0)
+	elif position == pl.position + Vector2(12.0, 0) and can_move_right:
+		position += Vector2(12.0, 0)
+		pl.position += Vector2(12.0, 0)
+	
+	check_collisions()
 
 func check_collisions():
 	if GameData.world_tilemap:

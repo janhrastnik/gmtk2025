@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://d4fdepgl88d81"]
+[gd_scene load_steps=5 format=4 uid="uid://d4fdepgl88d81"]
 
 [ext_resource type="Script" uid="uid://c6nfarag0xpsa" path="res://scenes/map_test.gd" id="1_o4b1t"]
 [ext_resource type="TileSet" uid="uid://cded1nikcxtrf" path="res://resources/urizen_tile_set.tres" id="1_y150f"]
 [ext_resource type="PackedScene" uid="uid://dc3m1hfr3sfhn" path="res://scenes/player.tscn" id="2_x5nem"]
+[ext_resource type="PackedScene" uid="uid://c5rrr35f37eov" path="res://scenes/interactable/rock.tscn" id="4_g3f5c"]
 
 [node name="Map Test" type="Node2D"]
 script = ExtResource("1_o4b1t")
@@ -13,3 +14,6 @@ tile_set = ExtResource("1_y150f")
 
 [node name="Player" parent="." instance=ExtResource("2_x5nem")]
 position = Vector2(36, 36)
+
+[node name="Rock" parent="." instance=ExtResource("4_g3f5c")]
+position = Vector2(84, 36)

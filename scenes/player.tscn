@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://r7tpb3svxai8" path="res://scenes/player.gd" id="1_g2els"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(36, 36)
+size = Vector2(30, 30)
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_g2els")
@@ -22,5 +22,3 @@ position = Vector2(6, 6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object Detect"]
 shape = SubResource("RectangleShape2D_g2els")
-
-[connection signal="area_entered" from="Object Detect" to="." method="_on_object_detect_area_entered"]

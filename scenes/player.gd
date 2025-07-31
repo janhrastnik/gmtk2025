@@ -12,6 +12,8 @@ var object_down = false
 var object_left = false
 var object_right = false
 
+@onready var object_detect_area: Area2D = $"Object Detect"
+
 func _ready() -> void:
 	check_collisions()
 
@@ -39,6 +41,7 @@ func _input(event: InputEvent) -> void:
 			position.x += 12
 
 	check_collisions()
+	check_for_objects()
 
 func check_collisions():
 	if GameData.world_tilemap:
@@ -74,13 +77,22 @@ func check_collisions():
 			else:
 				can_move_right = true
 
-func _on_object_detect_area_entered(area: Area2D) -> void:
-	var parent: Node2D = area.get_parent()
-	if parent.position == position - Vector2(0, 12.0):
-		object_up = parent
-	elif parent.position == position + Vector2(0, 12.0):
-		object_down = parent
-	elif parent.position == position - Vector2(12.0, 0):
-		object_left = parent
-	elif parent.position == position + Vector2(12.0, 0):
-		object_right = parent
+func check_for_objects():
+	object_up = false
+	object_down = false
+	object_left = false
+	object_right = false
+
+	for area in object_detect_area.get_overlapping_areas():
+		#print(position)
+		var parent: Node2D = area.get_parent()
+		#print(parent.position)
+		if parent.position == position - Vector2(0, 12.0):
+			object_up = parent
+		elif parent.position == position + Vector2(0, 12.0):
+			object_down = parent
+		elif parent.position == position - Vector2(12.0, 0):
+			object_left = parent
+		elif parent.position == position + Vector2(12.0, 0):
+			print("object on the right")
+			object_right = parent
