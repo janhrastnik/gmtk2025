@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=4 uid="uid://dg5qgpvblwkmw"]
 
 [ext_resource type="TileSet" uid="uid://cded1nikcxtrf" path="res://resources/urizen_tile_set.tres" id="1_b3gnw"]
-[ext_resource type="PackedScene" uid="uid://dc3m1hfr3sfhn" path="res://scenes/player.tscn" id="2_7ap43"]
+[ext_resource type="PackedScene" uid="uid://dc3m1hfr3sfhn" path="res://scenes/player/player.tscn" id="2_7ap43"]
 [ext_resource type="PackedScene" uid="uid://ycegeiop4h6x" path="res://scenes/interactable/loop_rock.tscn" id="3_7rx86"]
 
 [node name="LabWorld" type="Node2D"]
@@ -11,6 +11,8 @@ tile_map_data = PackedByteArray("AAD9/wEAAQAAAAcAAAD+/wEAAQAAAAcAAAD//wEAAQAAAAc
 tile_set = ExtResource("1_b3gnw")
 
 [node name="Player" parent="TileMapLayer" instance=ExtResource("2_7ap43")]
+starting_loop_position = Vector2(0, 0)
+remove_camera = false
 
 [node name="Pushables" type="Node" parent="."]
 

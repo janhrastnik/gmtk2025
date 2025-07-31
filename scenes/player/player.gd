@@ -8,7 +8,9 @@ var can_move_right = true
 
 var starting_level_position = Vector2.ZERO
 @export var starting_loop_position: Vector2 = Vector2.ZERO
+@export var remove_camera = false
 @onready var sound_module = $SoundModule
+
 
 var current_level = "gate_demo"
 
@@ -21,6 +23,8 @@ var object_right = false
 @onready var object_detect_area: Area2D = $"Object Detect"
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var debug_ui: CanvasLayer = $"Debug UI"
+@onready var camera: Camera2D = $Camera2D
+@onready var step_timer: Timer = $"Step Timer"
 
 func _ready() -> void:
 	check_collisions()
@@ -31,48 +35,59 @@ func _ready() -> void:
 	# debug mode
 	debug_ui.visible = true
 	
+	if remove_camera:
+		camera.enabled = false
+	
 	GameData.reset_events.connect(reset_player)
 	GameData.loop_events.connect(loopback_player)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("up") and can_move_up:
+func _physics_process(delta: float) -> void:
+	if not step_timer.time_left == 0:
+		return
+	if Input.is_action_pressed("up") and can_move_up:
 		if object_up is Rock:
 			object_up.move_rock(self)
 		else:
 			# normal move
-			sound_module.play_step_sound()
 			position.y -= 12
-	elif event.is_action_pressed("down") and can_move_down:
+			move_event()
+	elif Input.is_action_pressed("down") and can_move_down:
 		if object_down is Rock:
 			object_down.move_rock(self)
 		else:
-			sound_module.play_step_sound()
 			position.y += 12
-	elif event.is_action_pressed("left") and can_move_left:
+			move_event()
+	elif Input.is_action_pressed("left") and can_move_left:
 		sprite.flip_h = true
 		
 		if object_left is Rock:
 			object_left.move_rock(self)
 		else:
-			sound_module.play_step_sound()
 			position.x -= 12
-	elif event.is_action_pressed("right") and can_move_right:
+			move_event()
+	elif Input.is_action_pressed("right") and can_move_right:
 		sprite.flip_h = false
 		
 		if object_right is Rock:
 			object_right.move_rock(self)
 		else:
-			sound_module.play_step_sound()
 			position.x += 12
-	
+			move_event()
+
+func move_event():
+	sound_module.play_step_sound()
+	step_timer.start()
+
+	check_collisions()
+	check_for_objects()
+	GameData.player_move_events.emit(position)
+
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset"):
 		GameData.reset_events.emit(current_level)
 	
 	if event.is_action_pressed("loop"):
 		GameData.loop_events.emit()
-
-	check_collisions()
-	check_for_objects()
 
 func check_collisions():
 	if GameData.world_tilemap:
@@ -130,6 +145,14 @@ func check_for_objects():
 
 func reset_player(level_name):
 	position = starting_level_position
+	check_collisions()
+	check_for_objects()
 
 func loopback_player():
 	position = starting_loop_position
+	check_collisions()
+	check_for_objects()
+
+
+func _on_step_timer_timeout() -> void:
+	step_timer.stop()
