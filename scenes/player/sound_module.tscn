@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bx7m54ote1amk"]
+[gd_scene load_steps=3 format=3 uid="uid://bx7m54ote1amk"]
 
 [ext_resource type="Script" uid="uid://cv61iam8ge2y6" path="res://scenes/player/sound_module.gd" id="1_f1l56"]
+[ext_resource type="AudioStream" uid="uid://oh2uuwhrsou" path="res://assets/sfx/bonk.wav" id="2_l3bm7"]
 
 [node name="SoundModule" type="Node"]
 script = ExtResource("1_f1l56")
 
 [node name="StepSound" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="BonkSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_l3bm7")
+bus = &"SFX"

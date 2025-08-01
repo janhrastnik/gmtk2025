@@ -1,13 +1,14 @@
 extends Node
 
-var step_1 = preload("res://sfx/steps/step1.wav")
-var step_2 = preload("res://sfx/steps/step2.wav")
-var step_3 = preload("res://sfx/steps/step3.wav")
-var step_4 = preload("res://sfx/steps/step4.wav")
-var step_5 = preload("res://sfx/steps/step5.wav")
-var step_6 = preload("res://sfx/steps/step6.wav")
+var step_1 = preload("res://assets/sfx/steps/step1.wav")
+var step_2 = preload("res://assets/sfx/steps/step2.wav")
+var step_3 = preload("res://assets/sfx/steps/step3.wav")
+var step_4 = preload("res://assets/sfx/steps/step4.wav")
+var step_5 = preload("res://assets/sfx/steps/step5.wav")
+var step_6 = preload("res://assets/sfx/steps/step6.wav")
 
 @onready var step_sound: AudioStreamPlayer = $StepSound
+@onready var bonk_sound_player: AudioStreamPlayer = $BonkSound
 
 var rng = RandomNumberGenerator.new()
 
@@ -24,4 +25,6 @@ func play_step_sound():
 	
 	step_sound.play()
 	
-	
+
+func play_bonk_sound():
+	bonk_sound_player.play()

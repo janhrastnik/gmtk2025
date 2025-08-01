@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://digo1nf3h82io" path="res://assets/reset_rock.png" id="1_j4skb"]
 [ext_resource type="Script" uid="uid://bqwk7qpatfk8" path="res://scenes/interactable/reset_rock.gd" id="1_toq3j"]
-[ext_resource type="AudioStream" uid="uid://bvg44hsb3fu35" path="res://assets/music/push.wav" id="3_p5l6s"]
+[ext_resource type="AudioStream" uid="uid://bvg44hsb3fu35" path="res://assets/sfx/push.wav" id="3_p5l6s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_toq3j"]
 size = Vector2(10, 10)

@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://ds62r15aslufd"
-path="res://.godot/imported/step3.wav-92a67deb74c1e87cbbc52542f627d93b.sample"
+uid="uid://oh2uuwhrsou"
+path="res://.godot/imported/bonk.wav-0db2f847544d2084f4f97b6782d47dd0.sample"
 
 [deps]
 
-source_file="res://sfx/steps/step3.wav"
-dest_files=["res://.godot/imported/step3.wav-92a67deb74c1e87cbbc52542f627d93b.sample"]
+source_file="res://assets/sfx/bonk.wav"
+dest_files=["res://.godot/imported/bonk.wav-0db2f847544d2084f4f97b6782d47dd0.sample"]
 
 [params]
 

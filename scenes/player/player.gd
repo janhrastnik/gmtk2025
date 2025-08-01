@@ -50,33 +50,34 @@ func _physics_process(delta: float) -> void:
 		else:
 			# normal move
 			position.y -= 12
+			sound_module.play_step_sound()
 		step_timer.start()
 	elif Input.is_action_pressed("down") and can_move_down:
 		if object_down is Rock:
 			object_down.move_rock(self)
 		else:
 			position.y += 12
+			sound_module.play_step_sound()
 		step_timer.start()
 	elif Input.is_action_pressed("left") and can_move_left:
 		sprite.flip_h = true
-		
 		if object_left is Rock:
 			object_left.move_rock(self)
 		else:
 			position.x -= 12
+			sound_module.play_step_sound()
 		step_timer.start()
 	elif Input.is_action_pressed("right") and can_move_right:
 		sprite.flip_h = false
-		
 		if object_right is Rock:
 			object_right.move_rock(self)
 		else:
 			position.x += 12
+			sound_module.play_step_sound()
 		step_timer.start()
-
+		
+	
 func move_event():
-	sound_module.play_step_sound()
-
 	check_collisions()
 	check_for_objects()
 	GameData.player_move_events.emit(position)

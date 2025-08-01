@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://kipnvvbxajlm" path="res://scenes/unlockable/gate_one_req.gd" id="1_c2eym"]
 [ext_resource type="Texture2D" uid="uid://d1vq3wfvcjits" path="res://assets/gate_closed.png" id="1_kqjeg"]
 [ext_resource type="Texture2D" uid="uid://c7v3rxv06s2ys" path="res://assets/gate_open.png" id="3_fvxpb"]
-[ext_resource type="AudioStream" uid="uid://c30bv0myxjsge" path="res://assets/music/door_open.wav" id="4_tgfob"]
+[ext_resource type="AudioStream" uid="uid://c30bv0myxjsge" path="res://assets/sfx/door_open.wav" id="4_tgfob"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tgfob"]
 animations = [{
