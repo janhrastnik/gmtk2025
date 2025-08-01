@@ -15,10 +15,10 @@ var starting_level_position = Vector2.ZERO
 var current_level = "gate_demo"
 
 # references to objects player can interact with
-var object_up = false
-var object_down = false
-var object_left = false
-var object_right = false
+var object_up = null
+var object_down = null
+var object_left = null
+var object_right = null
 
 @onready var object_detect_area: Area2D = $"Object Detect"
 @onready var sprite: Sprite2D = $Sprite2D
@@ -127,12 +127,11 @@ func check_collisions():
 				can_move_right = true
 
 func check_for_objects():
-	object_up = false
-	object_down = false
-	object_left = false
-	object_right = false
+	object_up = null
+	object_down = null
+	object_left = null
+	object_right = null
 	
-
 	for area in object_detect_area.get_overlapping_areas():
 		var parent: Node2D = area.get_parent()
 		
