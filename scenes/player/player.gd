@@ -11,8 +11,8 @@ var starting_level_position = Vector2.ZERO
 @export var remove_camera = false
 @onready var sound_module: SoundModule = $SoundModule
 
-
-var current_level = "gate_demo"
+# reference to the level_area the player is currently in
+var current_level: LevelArea = null
 
 # references to objects player can interact with
 var object_up = null
@@ -38,7 +38,6 @@ func _ready() -> void:
 	if remove_camera:
 		camera.enabled = false
 	
-	GameData.reset_events.connect(reset_player)
 	GameData.loop_events.connect(loopback_player)
 
 func _physics_process(delta: float) -> void:
@@ -91,7 +90,7 @@ func move_event(move_vector):
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset"):
-		GameData.reset_events.emit(current_level)
+		reset_level()
 	
 	if event.is_action_pressed("loop"):
 		GameData.loop_events.emit()
@@ -140,19 +139,23 @@ func check_for_objects():
 	for area in object_detect_area.get_overlapping_areas():
 		var parent: Node2D = area.get_parent()
 		
-		if parent.position == position - Vector2(0, 12.0):
+		if parent.global_position == global_position - Vector2(0, 12.0):
 			object_up = parent
-		elif parent.position == position + Vector2(0, 12.0):
+		elif parent.global_position == global_position + Vector2(0, 12.0):
 			object_down = parent
-		elif parent.position == position - Vector2(12.0, 0):
+		elif parent.global_position == global_position - Vector2(12.0, 0):
 			object_left = parent
-		elif parent.position == position + Vector2(12.0, 0):
+		elif parent.global_position == global_position + Vector2(12.0, 0):
 			object_right = parent
 
-func reset_player(level_name):
+func reset_level():
+	# we reset the player
 	position = starting_level_position
 	check_collisions()
 	check_for_objects()
+	
+	# we reset the objects
+	current_level.reset_level_objects()
 
 func loopback_player():
 	position = starting_loop_position

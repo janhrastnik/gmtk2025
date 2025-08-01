@@ -25,11 +25,8 @@ func _init() -> void:
 	object_detect_area.add_child(col_shape)
 	add_child(object_detect_area)
 	
-	print("init call")
 
 func _ready() -> void:
-	print("ready call")
-
 	check_collisions()
 	
 func _physics_process(delta: float) -> void:
@@ -42,7 +39,7 @@ func _physics_process(delta: float) -> void:
 func check_collisions():
 	if GameData.world_tilemap:
 		
-		var pl_coords = Vector2i(floor(position.x/12), floor(position.y/12))
+		var pl_coords = Vector2i(floor(global_position.x/12), floor(global_position.y/12))
 		
 		var up = GameData.world_tilemap.get_cell_tile_data(pl_coords - Vector2i(0, 1))
 		var down = GameData.world_tilemap.get_cell_tile_data(pl_coords + Vector2i(0, 1))
@@ -74,21 +71,21 @@ func check_collisions():
 				can_move_right = true
 
 func move_rock(pl: Player):
-	if position == pl.position - Vector2(0, 12.0) and can_move_up and not object_up:
+	if global_position == pl.position - Vector2(0, 12.0) and can_move_up and not object_up:
 		# player is below rock
-		position -= Vector2(0, 12.0)
+		global_position -= Vector2(0, 12.0)
 		pl.position -= Vector2(0, 12.0)
 		$AudioStreamPlayer.play()
-	elif position == pl.position + Vector2(0, 12.0) and can_move_down and not object_down:
-		position += Vector2(0, 12.0)
+	elif global_position == pl.position + Vector2(0, 12.0) and can_move_down and not object_down:
+		global_position += Vector2(0, 12.0)
 		pl.position += Vector2(0, 12.0)
 		$AudioStreamPlayer.play()
-	elif position == pl.position - Vector2(12.0, 0) and can_move_left and not object_left:
-		position -= Vector2(12.0, 0)
+	elif global_position == pl.position - Vector2(12.0, 0) and can_move_left and not object_left:
+		global_position -= Vector2(12.0, 0)
 		pl.position -= Vector2(12.0, 0)
 		$AudioStreamPlayer.play()
-	elif position == pl.position + Vector2(12.0, 0) and can_move_right and not object_right:
-		position += Vector2(12.0, 0)
+	elif global_position == pl.position + Vector2(12.0, 0) and can_move_right and not object_right:
+		global_position += Vector2(12.0, 0)
 		pl.position += Vector2(12.0, 0)
 		$AudioStreamPlayer.play()
 	
@@ -108,11 +105,11 @@ func check_for_objects():
 		
 		#print("found object")
 		
-		if parent.position == position - Vector2(0, 12.0):
+		if parent.global_position == global_position - Vector2(0, 12.0):
 			object_up = parent
-		elif parent.position == position + Vector2(0, 12.0):
+		elif parent.global_position == global_position + Vector2(0, 12.0):
 			object_down = parent
-		elif parent.position == position - Vector2(12.0, 0):
+		elif parent.global_position == global_position - Vector2(12.0, 0):
 			object_left = parent
-		elif parent.position == position + Vector2(12.0, 0):
+		elif parent.global_position == global_position + Vector2(12.0, 0):
 			object_right = parent
