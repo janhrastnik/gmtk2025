@@ -101,12 +101,12 @@ func check_for_objects():
 	object_left = false
 	object_right = false
 	
-	print("checking")
+	# print("checking")
 	
 	for area in object_detect_area.get_overlapping_areas():
 		var parent: Node2D = area.get_parent()
 		
-		print("found object")
+		#print("found object")
 		
 		if parent.position == position - Vector2(0, 12.0):
 			object_up = parent
