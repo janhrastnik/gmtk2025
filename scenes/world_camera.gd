@@ -15,6 +15,7 @@ func adjust_camera(pl_position: Vector2):
 
 func adjust_camera_to_level(level_position: Vector2, level_size: Vector2):
 	# size right now of viewport is 1152x648
+	# camera is default zoomed in on 192x108
 	
 	# print("camera adjust call")
 	
@@ -32,7 +33,14 @@ func adjust_camera_to_level(level_position: Vector2, level_size: Vector2):
 		get_window().set_content_scale_aspect(3)
 		get_window().content_scale_size = level_size * x_coef
 
-	# if level_size.x 
+	if level_size.x > 192 or level_size.y > 108:
+		if level_size.x > level_size.y:
+			camera.zoom = Vector2(x_coef, x_coef)
+		else:
+			camera.zoom = Vector2(y_coef, y_coef)
+		get_window().set_content_scale_aspect(1)
+	else:
+		camera.zoom = Vector2(6, 6)
 	
 	# get_window().set_content_scale_mode(1)	
 	# get_viewport().size = Vector2(400.0, 400.0)
