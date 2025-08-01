@@ -3,9 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://05hmaqgswvvc" path="res://assets/characters/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://r7tpb3svxai8" path="res://scenes/player/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://bx7m54ote1amk" path="res://scenes/player/sound_module.tscn" id="2_gmlin"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(34, 34)
+[ext_resource type="Shape2D" uid="uid://codfshabux0ix" path="res://resources/detect_shape.tres" id="4_lvxji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(10, 10)
@@ -28,7 +26,7 @@ position = Vector2(6, 6)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object Detect"]
-shape = SubResource("RectangleShape2D_g2els")
+shape = ExtResource("4_lvxji")
 
 [node name="Object Interact" type="Area2D" parent="."]
 collision_layer = 6
