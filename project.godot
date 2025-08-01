@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="gmtk2025"
-run/main_scene="uid://dg5qgpvblwkmw"
+run/main_scene="uid://cexi6aq2u2acm"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,7 @@ GameData="*res://scenes/singleton/game_data.tscn"
 [display]
 
 window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
 window/stretch/scale_mode="integer"
 
 [input]
