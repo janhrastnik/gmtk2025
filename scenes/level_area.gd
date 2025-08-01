@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 		pass
 
 func _on_shape_changed():
-	print("changed level shape")
+	# print("changed level shape")
 	collision_shape.shape = level_shape
 	collision_shape.position = level_shape.size/2
 
@@ -30,5 +30,6 @@ func _on_shape_changed():
 func _on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Player:
-		print("emited")
+		# print("emited")
+		parent.set_starting_level_position(parent.position)
 		GameData.camera_move_events.emit(position, level_shape.size)

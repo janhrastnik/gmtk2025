@@ -157,3 +157,6 @@ func loopback_player():
 
 func _on_step_timer_timeout() -> void:
 	step_timer.stop()
+
+func set_starting_level_position(pos: Vector2):
+	starting_level_position = pos
