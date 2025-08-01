@@ -5,6 +5,7 @@ extends Node2D
 
 func _ready() -> void:
 	#GameData.player_move_events.connect(adjust_camera)
+	GameData.world_camera = self
 	GameData.camera_move_events.connect(adjust_camera_to_level)
 	pass
 
@@ -18,6 +19,9 @@ func adjust_camera_to_level(level_position: Vector2, level_size: Vector2):
 	# camera is default zoomed in on 192x108
 	
 	# print("camera adjust call")
+	
+	if not camera.enabled:
+		return
 	
 	var x_coef = 1152/level_size.x
 	var y_coef = 648/level_size.y

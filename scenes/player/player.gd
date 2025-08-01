@@ -94,7 +94,20 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("loop"):
 		GameData.loop_events.emit()
-
+	
+	if event.is_action_pressed("camera_toggle"):
+		# print("foo")
+		if camera.enabled:
+			camera.enabled = false
+			if GameData.world_camera:
+				GameData.world_camera.camera.enabled = true
+				GameData.world_camera.adjust_camera_to_level(current_level.position, current_level.level_shape.size)
+		else:
+			camera.enabled = true
+			camera.zoom = Vector2(6, 6)
+			get_window().content_scale_size = Vector2(1152, 648)
+			if GameData.world_camera:
+				GameData.world_camera.camera.enabled = false
 
 func check_collisions():
 	if GameData.world_tilemap:

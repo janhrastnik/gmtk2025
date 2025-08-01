@@ -135,7 +135,6 @@ event_name = "top_1"
 [node name="GateOneReq" parent="top_1" instance=ExtResource("9_24gry")]
 position = Vector2(1008, -120)
 event_name = "top_1"
-level_name = "top_1"
 
 [node name="bot_1" type="Node" parent="."]
 
