@@ -49,39 +49,30 @@ parameters/looping = true
 
 [node name="Reset Rock16" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(864, -180)
-level_name = "top_1"
 
 [node name="Reset Rock17" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(936, -156)
-level_name = "top_1"
 
 [node name="Reset Rock18" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(960, -144)
-level_name = "top_1"
 
 [node name="Reset Rock19" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(912, -180)
-level_name = "top_1"
 
 [node name="Reset Rock20" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(936, -180)
-level_name = "top_1"
 
 [node name="Reset Rock21" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(924, -204)
-level_name = "top_1"
 
 [node name="Reset Rock22" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(948, -192)
-level_name = "top_1"
 
 [node name="Reset Rock23" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(960, -192)
-level_name = "top_1"
 
 [node name="Reset Rock24" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(960, -204)
-level_name = "top_1"
 
 [node name="Loop Rock33" parent="top_1" instance=ExtResource("3_7rx86")]
 position = Vector2(924, -108)
@@ -106,46 +97,36 @@ position = Vector2(912, -108)
 
 [node name="Reset Rock" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(912, -132)
-level_name = "top_1"
 
 [node name="Reset Rock2" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(900, -144)
-level_name = "top_1"
 
 [node name="Reset Rock3" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(900, -168)
-level_name = "top_1"
 
 [node name="Reset Rock4" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(912, -156)
-level_name = "top_1"
 
 [node name="Loop Rock4" parent="top_1" instance=ExtResource("3_7rx86")]
 position = Vector2(996, -192)
 
 [node name="Reset Rock5" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(972, -156)
-level_name = "top_1"
 
 [node name="Reset Rock6" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(984, -156)
-level_name = "top_1"
 
 [node name="Reset Rock7" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(972, -168)
-level_name = "top_1"
 
 [node name="Reset Rock8" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(984, -180)
-level_name = "top_1"
 
 [node name="Reset Rock9" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(996, -168)
-level_name = "top_1"
 
 [node name="Reset Rock10" parent="top_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(996, -156)
-level_name = "top_1"
 
 [node name="LoopPressurePlate" parent="top_1" instance=ExtResource("8_07bu2")]
 position = Vector2(996, -204)
@@ -190,35 +171,27 @@ position = Vector2(876, 180)
 
 [node name="Reset Rock8" parent="bot_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(852, -108)
-level_name = "top_1"
 
 [node name="Reset Rock9" parent="bot_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(852, -120)
-level_name = "top_1"
 
 [node name="Reset Rock10" parent="bot_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(864, -120)
-level_name = "top_1"
 
 [node name="Reset Rock11" parent="bot_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(876, -120)
-level_name = "top_1"
 
 [node name="Reset Rock12" parent="bot_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(876, -132)
-level_name = "top_1"
 
 [node name="Reset Rock13" parent="bot_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(852, -156)
-level_name = "top_1"
 
 [node name="Reset Rock14" parent="bot_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(864, -156)
-level_name = "top_1"
 
 [node name="Reset Rock15" parent="bot_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(864, -168)
-level_name = "top_1"
 
 [node name="Entry_right_1" type="Node" parent="."]
 
@@ -281,31 +254,24 @@ position = Vector2(984, -24)
 
 [node name="Reset Rock" parent="Entry_right_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(924, 0)
-level_name = "Entry_right_1"
 
 [node name="Reset Rock2" parent="Entry_right_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(936, 0)
-level_name = "Entry_right_1"
 
 [node name="Reset Rock3" parent="Entry_right_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(948, 0)
-level_name = "Entry_right_1"
 
 [node name="Reset Rock4" parent="Entry_right_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(972, 0)
-level_name = "Entry_right_1"
 
 [node name="Reset Rock5" parent="Entry_right_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(852, -72)
-level_name = "Entry_right_1"
 
 [node name="Reset Rock6" parent="Entry_right_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(864, -72)
-level_name = "Entry_right_1"
 
 [node name="Reset Rock7" parent="Entry_right_1" instance=ExtResource("7_ujxn6")]
 position = Vector2(876, -72)
-level_name = "Entry_right_1"
 
 [node name="Loop Rock20" parent="Entry_right_1" instance=ExtResource("3_7rx86")]
 position = Vector2(852, 72)
@@ -329,12 +295,9 @@ position = Vector2(396, -228)
 
 [node name="Reset Rock11" parent="lab" instance=ExtResource("7_ujxn6")]
 position = Vector2(240, -216)
-level_name = "lab"
 
 [node name="Reset Rock12" parent="lab" instance=ExtResource("7_ujxn6")]
 position = Vector2(276, -216)
-level_name = "lab"
 
 [node name="Reset Rock13" parent="lab" instance=ExtResource("7_ujxn6")]
 position = Vector2(348, -228)
-level_name = "lab"

@@ -9,8 +9,6 @@ func _ready() -> void:
 	super._ready()
 	
 	starting_position = position
-	
-	# GameData.reset_events.connect(reset_state)
 	GameData.loop_events.connect(looped_state)
 
 func looped_state():

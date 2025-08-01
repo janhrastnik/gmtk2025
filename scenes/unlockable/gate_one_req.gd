@@ -2,7 +2,6 @@ class_name GateOneReq
 extends Node2D
 
 @export var event_name: String = ""
-@export var level_name: String = ""
 
 var is_closed = true
 
