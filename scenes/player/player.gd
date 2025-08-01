@@ -9,7 +9,7 @@ var can_move_right = true
 var starting_level_position = Vector2.ZERO
 @export var starting_loop_position: Vector2 = Vector2.ZERO
 @export var remove_camera = false
-@onready var sound_module = $SoundModule
+@onready var sound_module: SoundModule = $SoundModule
 
 
 var current_level = "gate_demo"
@@ -44,6 +44,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not step_timer.time_left == 0:
 		return
+	elif Input.get_vector("left", "right", "up", "down") != Vector2.ZERO:
+			move_event(Input.get_vector("left", "right", "up", "down"))
+			
+			# maybe good for performance, maybe problematic, we will see
+			step_timer.start()
 	if Input.is_action_pressed("up") and can_move_up:
 		if object_up is Rock:
 			object_up.move_rock(self)
@@ -77,10 +82,12 @@ func _physics_process(delta: float) -> void:
 		step_timer.start()
 		
 	
-func move_event():
+func move_event(move_vector):
 	check_collisions()
 	check_for_objects()
 	GameData.player_move_events.emit(position)
+	
+	sound_module.play_bonk_sound_maybe(move_vector)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset"):
@@ -89,8 +96,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("loop"):
 		GameData.loop_events.emit()
 
-	if Input.get_vector("up", "down", "left", "right") != Vector2.ZERO:
-		move_event() 
 
 func check_collisions():
 	if GameData.world_tilemap:
