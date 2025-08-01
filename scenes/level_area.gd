@@ -10,16 +10,19 @@ extends Area2D
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
-func _ready() -> void:
-	collision_shape.shape = level_shape
-	collision_shape.position = level_shape.size/2
+var is_first_physics_frame = true
 
-func _process(delta: float) -> void:
-	if Engine.is_editor_hint():
-		# Code to execute in editor.
-		# print("foo")
-		# collision_shape.shape = level_shape
-		pass
+# a list of references to objects
+var level_objects = []
+
+func _ready() -> void:
+	if level_shape:
+		collision_shape.shape = level_shape
+		collision_shape.position = level_shape.size/2
+
+func _physics_process(delta: float) -> void:
+	if is_first_physics_frame:
+		find_level_objects()
 
 func _on_shape_changed():
 	# print("changed level shape")
@@ -33,3 +36,10 @@ func _on_area_entered(area: Area2D) -> void:
 		# print("emited")
 		parent.set_starting_level_position(parent.position)
 		GameData.camera_move_events.emit(position, level_shape.size)
+
+func find_level_objects():
+	# We find objects that belong to this level. We do this so that when the player
+	# hits reset in a level, we know which objects to reset
+	for area in get_overlapping_areas():
+		pass
+	pass
