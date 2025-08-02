@@ -14,6 +14,9 @@ var starting_level_position = Vector2.ZERO
 # reference to the level_area the player is currently in
 var current_level: LevelArea = null
 
+# reference to the level_area that the player is entering
+var next_level: LevelArea = null
+
 # references to objects player can interact with
 var object_up = null
 var object_down = null
