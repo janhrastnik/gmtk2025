@@ -132,6 +132,11 @@ func trigger_loop() -> void:
 	await get_tree().create_timer(1).timeout
 	
 	GameData.loop_events.emit()
+	
+	await get_tree().create_timer(1).timeout
+	# man idk, i think we gotta wait this one out
+	
+	GameData.global_events.emit("looped_state_post_check")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset") and can_reset:

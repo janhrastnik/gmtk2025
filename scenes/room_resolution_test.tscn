@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cexi6aq2u2acm"]
+[gd_scene load_steps=19 format=4 uid="uid://cexi6aq2u2acm"]
 
 [ext_resource type="Script" uid="uid://cxm3xuds688x4" path="res://scenes/room_resolution_test.gd" id="1_23qa2"]
 [ext_resource type="TileSet" uid="uid://cded1nikcxtrf" path="res://resources/urizen_tile_set.tres" id="1_y1h7x"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://8pcpw4gfbki3" path="res://scenes/unlockable/gate_one_req.tscn" id="8_n356b"]
 [ext_resource type="PackedScene" uid="uid://dqyh326ddfrxo" path="res://scenes/interactable/text_prompt.tscn" id="8_qdn77"]
 [ext_resource type="PackedScene" uid="uid://cydpl45ysvfqy" path="res://scenes/interactable/reset_pressure_plate.tscn" id="9_n356b"]
+[ext_resource type="PackedScene" uid="uid://bbsk6tnse7wvv" path="res://scenes/interactable/loop_pressure_plate.tscn" id="10_3dvgg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncipp"]
 size = Vector2(192, 108)
@@ -104,9 +105,13 @@ position = Vector2(228, 36)
 text = "foo foo foo"
 
 [node name="GateOneReq" parent="." instance=ExtResource("8_n356b")]
-position = Vector2(120, 36)
+position = Vector2(144, 12)
 event_name = "foo"
 
 [node name="ResetPressurePlate" parent="." instance=ExtResource("9_n356b")]
-position = Vector2(96, 60)
+position = Vector2(132, 48)
+event_name = "foo"
+
+[node name="LoopPressurePlate" parent="." instance=ExtResource("10_3dvgg")]
+position = Vector2(132, 12)
 event_name = "foo"

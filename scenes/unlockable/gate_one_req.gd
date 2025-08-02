@@ -7,11 +7,16 @@ var is_closed = true
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-func _ready() -> void:
+func _init() -> void:
+	# this calls before _ready i think, i hope..
 	GameData.tilemap_loaded_event.connect(toggle_gate)
 	GameData.global_events.connect(gate_check)
 	# calling toggle_gate leads to a race condition with world_tilemap not being set
 	#toggle_gate()
+	
+	if GameData.world_tilemap:
+		# this certainly shouldn't happen, but if it does we should toggle gate
+		toggle_gate()
 
 func gate_check(received_event_name: String):
 	if event_name == received_event_name:
