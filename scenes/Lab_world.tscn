@@ -326,29 +326,27 @@ position = Vector2(1608, 72)
 [node name="Loop Rock22" parent="Entry_right_1" instance=ExtResource("3_7rx86")]
 position = Vector2(1620, 72)
 
-[node name="lab" type="Node" parent="."]
-
-[node name="Loop Rock5" parent="lab" instance=ExtResource("3_7rx86")]
-position = Vector2(240, -180)
-
-[node name="Loop Rock6" parent="lab" instance=ExtResource("3_7rx86")]
-position = Vector2(276, -180)
-
-[node name="Loop Rock7" parent="lab" instance=ExtResource("3_7rx86")]
-position = Vector2(396, -228)
-
-[node name="Reset Rock11" parent="lab" instance=ExtResource("7_ujxn6")]
-position = Vector2(240, -216)
-
-[node name="Reset Rock12" parent="lab" instance=ExtResource("7_ujxn6")]
-position = Vector2(276, -216)
-
-[node name="Reset Rock13" parent="lab" instance=ExtResource("7_ujxn6")]
-position = Vector2(348, -228)
-
-[node name="LevelArea - Lab" parent="lab" instance=ExtResource("11_jrvd7")]
+[node name="Experiments Room" parent="." instance=ExtResource("11_jrvd7")]
 position = Vector2(204, -264)
 level_shape = SubResource("RectangleShape2D_wgcc6")
+
+[node name="Loop Rock5" parent="Experiments Room" instance=ExtResource("3_7rx86")]
+position = Vector2(36, 84)
+
+[node name="Loop Rock6" parent="Experiments Room" instance=ExtResource("3_7rx86")]
+position = Vector2(72, 84)
+
+[node name="Loop Rock7" parent="Experiments Room" instance=ExtResource("3_7rx86")]
+position = Vector2(192, 36)
+
+[node name="Reset Rock11" parent="Experiments Room" instance=ExtResource("7_ujxn6")]
+position = Vector2(36, 48)
+
+[node name="Reset Rock12" parent="Experiments Room" instance=ExtResource("7_ujxn6")]
+position = Vector2(72, 48)
+
+[node name="Reset Rock13" parent="Experiments Room" instance=ExtResource("7_ujxn6")]
+position = Vector2(144, 36)
 
 [node name="Main Hall Second Part" parent="." instance=ExtResource("11_jrvd7")]
 position = Vector2(492, -132)
