@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bteyecpb3pjr2"]
+
+[ext_resource type="Shader" uid="uid://d4kj2ovvwbrd2" path="res://UI/portal.gdshader" id="1_aew1e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sgmfm"]
+shader = ExtResource("1_aew1e")
+shader_parameter/color_accent = Color(1, 1, 1, 1)
+shader_parameter/color_background = Color(0.2, 0.4, 0.8, 1)
+shader_parameter/radius_outer = 0.298
+shader_parameter/radius_inner = 0.0
+shader_parameter/angle_size = 0.1
+shader_parameter/n_sections = 3
+shader_parameter/section_curve = 1.0
+shader_parameter/spin_speed = 1.0
+shader_parameter/radius_softness = 0.02
+shader_parameter/angle_softness = 0.1
+
+[node name="Portal" type="ColorRect"]
+material = SubResource("ShaderMaterial_sgmfm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.156863, 1, 1, 1)
