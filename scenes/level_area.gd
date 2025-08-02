@@ -54,13 +54,11 @@ func find_level_objects():
 	for area in get_overlapping_areas():
 		var parent = area.get_parent()
 		
-		print("found overlapping area")
-		print(parent)
+		#print("found overlapping area")
+		#print(parent)
 		
 		if parent is Rock:
 			parent.do_checks = true
-		
-		if parent is ResetRock:
 			level_objects.append(parent)
 	
 	has_fetched_objects = true
@@ -70,18 +68,36 @@ func reset_level_objects():
 	for object in level_objects:
 		# a bit fucky because this is dynamic
 		# we don't exactly know what the object is and if it has reset_state() call
-		object.reset_state()
-	
+		
+		if object is ResetRock:
+			object.reset_state()
+
+	# seperate loop because it's safer against race conditions I think
 	for object in level_objects:
 		if object is Rock:
 			object.do_checks = true
+	
+	if check_for_overlapping_objects():
+		# we found an overlapping object, just reset the loop rocks as well in this case
+		for object in level_objects:
+			if object is LoopRock:
+				object.looped_state()
+
+func check_for_overlapping_objects() -> bool:
+	# check if object is on another object, this can happen with a reset rock landing on a loop rock
+	for object_1 in level_objects:
+		for object_2 in level_objects:
+			if object_1.global_position == object_2.global_position and object_1 != object_2:
+				# found a overlapping object
+				return true
+	return false
 
 func switch_level_area(player: Player):
 		# print("emited")
 		player.current_level = self
 		player.set_starting_level_position(player.position)
 		GameData.camera_move_events.emit(position, level_shape.size)
-		
+
 		# we didn't really need to find objects til now
 		if not has_fetched_objects:
 			should_fetch_objects = true

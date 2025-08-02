@@ -13,3 +13,6 @@ func _ready() -> void:
 
 func looped_state():
 	position = starting_position
+	
+	# we need to check if the loop rock landed on a reset rock
+	should_check_for_overlaps = true

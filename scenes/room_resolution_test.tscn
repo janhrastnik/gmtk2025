@@ -35,6 +35,7 @@ tile_set = ExtResource("1_y1h7x")
 
 [node name="Player" parent="." instance=ExtResource("2_ufhsu")]
 position = Vector2(60, 60)
+starting_loop_position = Vector2(48, 48)
 remove_camera = true
 
 [node name="Level 1" parent="." instance=ExtResource("5_ncipp")]
@@ -70,3 +71,6 @@ level_shape = SubResource("RectangleShape2D_n356b")
 [node name="LevelArea" parent="." instance=ExtResource("5_ncipp")]
 position = Vector2(-60, -60)
 level_shape = SubResource("RectangleShape2D_3dvgg")
+
+[node name="Reset Rock" parent="." instance=ExtResource("6_qdn77")]
+position = Vector2(96, 72)
