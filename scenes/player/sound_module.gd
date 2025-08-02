@@ -13,6 +13,8 @@ var step_6 = preload("res://assets/sfx/steps/step6.wav")
 @onready var step_sound: AudioStreamPlayer = $StepSound
 @onready var bonk_sound_player: AudioStreamPlayer = $BonkSound
 @onready var push_sound_player: AudioStreamPlayer = $PushSound
+@onready var reset_sound_player: AudioStreamPlayer = $WarpResetSound
+@onready var loop_sound_player: AudioStreamPlayer = $WarpLoopSound
 
 var rng = RandomNumberGenerator.new()
 
@@ -45,3 +47,9 @@ func play_bonk_sound_maybe(move_vector: Vector2):
 
 func play_push_sound():
 	push_sound_player.play()
+
+func play_reset_sound():
+	reset_sound_player.play()
+	
+func play_loop_sound():
+	loop_sound_player.play()

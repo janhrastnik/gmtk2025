@@ -98,9 +98,13 @@ func move_rock(pl: Player):
 		global_position += Vector2(12.0, 0)
 		pl.global_position += Vector2(12.0, 0)
 	
+	print(object_left)
+	
 	do_checks = true
 
 func check_for_objects():
+	# we shouldn't be finding a player here
+	
 	object_up = false
 	object_down = false
 	object_left = false
@@ -114,19 +118,23 @@ func check_for_objects():
 		#print("found object")
 		
 		if parent.global_position == global_position - Vector2(0, 12.0):
-			object_up = parent
+			if parent is not Player:
+				object_up = parent
 			if parent is Rock:
 				parent.object_down = self
 		elif parent.global_position == global_position + Vector2(0, 12.0):
-			object_down = parent
+			if parent is not Player:	
+				object_down = parent
 			if parent is Rock:
 				parent.object_up = self
 		elif parent.global_position == global_position - Vector2(12.0, 0):
-			object_left = parent
+			if parent is not Player:
+				object_left = parent
 			if parent is Rock:
 				parent.object_right = self
 		elif parent.global_position == global_position + Vector2(12.0, 0):
-			object_right = parent
+			if parent is not Player:
+				object_right = parent
 			if parent is Rock:
 				parent.object_left = self
 
