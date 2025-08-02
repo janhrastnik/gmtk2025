@@ -24,7 +24,6 @@ tile_map_data = PackedByteArray("AAABAAEAAQAJAAcAAAACAAEAAQAJAAcAAAADAAEAAQAJAAc
 tile_set = ExtResource("1_y150f")
 
 [node name="Player" parent="." instance=ExtResource("2_x5nem")]
-z_index = 1
 position = Vector2(36, 36)
 starting_loop_position = Vector2(48, 48)
 
