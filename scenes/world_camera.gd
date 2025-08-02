@@ -7,12 +7,6 @@ func _ready() -> void:
 	#GameData.player_move_events.connect(adjust_camera)
 	GameData.world_camera = self
 	GameData.camera_move_events.connect(adjust_camera_to_level)
-	pass
-
-func adjust_camera(pl_position: Vector2):
-	# 192 x 108
-	var coef = floor(pl_position / Vector2(192.0, 108.0))
-	camera.position = coef * Vector2(192.0, 108.0)
 
 func adjust_camera_to_level(level_position: Vector2, level_size: Vector2):
 	# size right now of viewport is 1152x648

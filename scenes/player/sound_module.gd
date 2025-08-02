@@ -15,6 +15,7 @@ var step_6 = preload("res://assets/sfx/steps/step6.wav")
 @onready var push_sound_player: AudioStreamPlayer = $PushSound
 @onready var reset_sound_player: AudioStreamPlayer = $WarpResetSound
 @onready var loop_sound_player: AudioStreamPlayer = $WarpLoopSound
+@onready var background_music_player: AudioStreamPlayer = $BackgroundMusic
 
 var rng = RandomNumberGenerator.new()
 

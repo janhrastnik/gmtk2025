@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=4 uid="uid://cexi6aq2u2acm"]
+[gd_scene load_steps=16 format=4 uid="uid://cexi6aq2u2acm"]
 
 [ext_resource type="Script" uid="uid://cxm3xuds688x4" path="res://scenes/room_resolution_test.gd" id="1_23qa2"]
 [ext_resource type="TileSet" uid="uid://cded1nikcxtrf" path="res://resources/urizen_tile_set.tres" id="1_y1h7x"]
 [ext_resource type="PackedScene" uid="uid://dc3m1hfr3sfhn" path="res://scenes/player/player.tscn" id="2_ufhsu"]
-[ext_resource type="PackedScene" uid="uid://covk6owdq7eqt" path="res://scenes/world_camera.tscn" id="3_ufhsu"]
 [ext_resource type="PackedScene" uid="uid://ycegeiop4h6x" path="res://scenes/interactable/loop_rock.tscn" id="5_cpv22"]
 [ext_resource type="PackedScene" uid="uid://cltg5violv57m" path="res://scenes/level_area.tscn" id="5_ncipp"]
 [ext_resource type="PackedScene" uid="uid://c5rrr35f37eov" path="res://scenes/interactable/reset_rock.tscn" id="6_qdn77"]
@@ -70,8 +69,6 @@ level_shape = SubResource("RectangleShape2D_cpv22")
 [node name="Level 4" parent="." instance=ExtResource("5_ncipp")]
 position = Vector2(0, 108)
 level_shape = SubResource("RectangleShape2D_qdn77")
-
-[node name="WorldCamera" parent="." instance=ExtResource("3_ufhsu")]
 
 [node name="Level 5" parent="." instance=ExtResource("5_ncipp")]
 position = Vector2(0, 180)

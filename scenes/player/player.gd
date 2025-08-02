@@ -36,6 +36,8 @@ var should_check_camera_edge_case = false
 @onready var step_timer: Timer = $"Step Timer"
 @onready var vfx: VfxLayer = $VfxLayer
 
+@onready var world_camera_packed: PackedScene = preload("res://scenes/world_camera.tscn")
+
 func _ready() -> void:
 	check_collisions()
 	
@@ -49,6 +51,11 @@ func _ready() -> void:
 		camera.enabled = false
 	
 	GameData.loop_events.connect(loopback_player)
+
+	# setup the world camera
+	var world_camera: WorldCamera = world_camera_packed.instantiate()
+	get_tree().root.add_child.call_deferred(world_camera)
+	
 
 func _physics_process(delta: float) -> void:
 	if not step_timer.time_left == 0:

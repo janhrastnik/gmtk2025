@@ -1,15 +1,13 @@
-[gd_scene load_steps=18 format=4 uid="uid://dg5qgpvblwkmw"]
+[gd_scene load_steps=16 format=4 uid="uid://dg5qgpvblwkmw"]
 
 [ext_resource type="Script" uid="uid://cxm3xuds688x4" path="res://scenes/room_resolution_test.gd" id="1_4haap"]
 [ext_resource type="TileSet" uid="uid://cded1nikcxtrf" path="res://resources/urizen_tile_set.tres" id="1_b3gnw"]
 [ext_resource type="PackedScene" uid="uid://2wjqtp6o7amn" path="res://UI/options.tscn" id="1_feob0"]
 [ext_resource type="PackedScene" uid="uid://dc3m1hfr3sfhn" path="res://scenes/player/player.tscn" id="2_7ap43"]
 [ext_resource type="PackedScene" uid="uid://ycegeiop4h6x" path="res://scenes/interactable/loop_rock.tscn" id="3_7rx86"]
-[ext_resource type="AudioStream" uid="uid://bc8xdsydnkjwb" path="res://assets/music/ytdl.canehill.info - Firewall Override (Royalty Free Investigation Themed Ambient, Inspired by Uplink) (320 KBps).mp3" id="5_wv6pd"]
 [ext_resource type="PackedScene" uid="uid://c5rrr35f37eov" path="res://scenes/interactable/reset_rock.tscn" id="7_ujxn6"]
 [ext_resource type="PackedScene" uid="uid://bbsk6tnse7wvv" path="res://scenes/interactable/loop_pressure_plate.tscn" id="8_07bu2"]
 [ext_resource type="PackedScene" uid="uid://8pcpw4gfbki3" path="res://scenes/unlockable/gate_one_req.tscn" id="9_24gry"]
-[ext_resource type="PackedScene" uid="uid://covk6owdq7eqt" path="res://scenes/world_camera.tscn" id="10_eifc6"]
 [ext_resource type="PackedScene" uid="uid://cltg5violv57m" path="res://scenes/level_area.tscn" id="11_jrvd7"]
 [ext_resource type="PackedScene" uid="uid://sdxuu47724nl" path="res://scenes/interactable/power_on_button_tile.tscn" id="12_jrvd7"]
 [ext_resource type="PackedScene" uid="uid://v03bgudll14b" path="res://scenes/interactable/reset_ability_tile.tscn" id="13_wgcc6"]
@@ -56,10 +54,6 @@ position = Vector2(216, 12)
 
 [node name="Loop Rock4" parent="front_gate" instance=ExtResource("3_7rx86")]
 position = Vector2(216, -12)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_wv6pd")
-parameters/looping = true
 
 [node name="top_1" type="Node" parent="."]
 
@@ -321,9 +315,6 @@ position = Vector2(348, -228)
 position = Vector2(204, -264)
 level_shape = SubResource("RectangleShape2D_wgcc6")
 
-[node name="WorldCamera" parent="." instance=ExtResource("10_eifc6")]
-visible = false
-
 [node name="LevelArea-Main_hall" parent="." instance=ExtResource("11_jrvd7")]
 visible = false
 position = Vector2(180, -132)
@@ -395,72 +386,6 @@ position = Vector2(1068, -276)
 [node name="Loop Rock20" parent="Level_design" instance=ExtResource("3_7rx86")]
 position = Vector2(1056, -264)
 
-[node name="Loop Rock" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1716, -384)
-
-[node name="Loop Rock2" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1740, -360)
-
-[node name="Loop Rock3" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1728, -408)
-
-[node name="Loop Rock4" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1740, -408)
-
-[node name="Loop Rock5" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1752, -396)
-
-[node name="Loop Rock6" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1728, -396)
-
-[node name="Loop Rock7" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1764, -384)
-
-[node name="Loop Rock8" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1740, -384)
-
-[node name="Loop Rock9" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1764, -360)
-
-[node name="Loop Rock10" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1764, -348)
-
-[node name="Loop Rock11" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1752, -336)
-
-[node name="Loop Rock12" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1728, -336)
-
-[node name="Loop Rock13" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1740, -324)
-
-[node name="Loop Rock14" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1740, -312)
-
-[node name="Loop Rock15" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1716, -324)
-
-[node name="Loop Rock16" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1716, -312)
-
-[node name="Loop Rock17" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1704, -336)
-
-[node name="Loop Rock18" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1692, -312)
-
-[node name="Loop Rock19" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1632, -336)
-
-[node name="Loop Rock20" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1644, -324)
-
-[node name="Loop Rock21" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1668, -348)
-
-[node name="Loop Rock24" parent="." instance=ExtResource("3_7rx86")]
-position = Vector2(1632, -312)
-
 [node name="LevelArea" parent="." instance=ExtResource("11_jrvd7")]
 visible = false
 position = Vector2(1704, -108)
@@ -471,3 +396,73 @@ position = Vector2(612, 0)
 
 [node name="ResetAbilityTile" parent="." instance=ExtResource("13_wgcc6")]
 position = Vector2(2544, -456)
+
+[node name="Upper Chambers" type="Node" parent="."]
+
+[node name="Upper Chamber 7" type="Node" parent="Upper Chambers"]
+
+[node name="Loop Rock" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1716, -384)
+
+[node name="Loop Rock2" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1740, -360)
+
+[node name="Loop Rock3" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1728, -408)
+
+[node name="Loop Rock4" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1740, -408)
+
+[node name="Loop Rock5" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1752, -396)
+
+[node name="Loop Rock6" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1728, -396)
+
+[node name="Loop Rock7" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1764, -384)
+
+[node name="Loop Rock8" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1740, -384)
+
+[node name="Loop Rock9" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1764, -360)
+
+[node name="Loop Rock10" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1764, -348)
+
+[node name="Loop Rock11" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1752, -336)
+
+[node name="Loop Rock12" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1728, -336)
+
+[node name="Loop Rock13" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1740, -324)
+
+[node name="Loop Rock14" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1740, -312)
+
+[node name="Loop Rock15" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1716, -324)
+
+[node name="Loop Rock16" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1716, -312)
+
+[node name="Loop Rock17" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1704, -336)
+
+[node name="Loop Rock18" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1692, -312)
+
+[node name="Loop Rock19" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1632, -336)
+
+[node name="Loop Rock20" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1644, -324)
+
+[node name="Loop Rock21" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1668, -348)
+
+[node name="Loop Rock24" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("3_7rx86")]
+position = Vector2(1632, -312)
