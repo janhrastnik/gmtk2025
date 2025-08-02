@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://r7tpb3svxai8" path="res://scenes/player/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://bx7m54ote1amk" path="res://scenes/player/sound_module.tscn" id="2_gmlin"]
 [ext_resource type="Shape2D" uid="uid://codfshabux0ix" path="res://resources/detect_shape.tres" id="4_lvxji"]
-[ext_resource type="PackedScene" uid="uid://dippuq3llbmyu" path="res://scenes/vfx/vfx_layer.tscn" id="5_p47bc"]
+[ext_resource type="PackedScene" uid="uid://dippuq3llbmyu" path="res://scenes/interactable/vfx_layer.tscn" id="5_p47bc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(10, 10)

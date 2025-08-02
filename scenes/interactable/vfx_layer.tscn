@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dippuq3llbmyu"]
+[gd_scene load_steps=8 format=3 uid="uid://dippuq3llbmyu"]
 
-[ext_resource type="Script" uid="uid://6qibvv1sd72u" path="res://scenes/vfx/vfx_layer.gd" id="1_4o6fi"]
-[ext_resource type="PackedScene" uid="uid://bteyecpb3pjr2" path="res://UI/portal.tscn" id="1_kvldp"]
+[ext_resource type="Script" uid="uid://6qibvv1sd72u" path="res://scenes/vfx/vfx_layer.gd" id="1_ussoy"]
+[ext_resource type="PackedScene" uid="uid://bteyecpb3pjr2" path="res://UI/portal.tscn" id="2_jvqa2"]
+[ext_resource type="PackedScene" uid="uid://keufu2408sp4" path="res://UI/text.tscn" id="3_sxkib"]
 
 [sub_resource type="Animation" id="Animation_mrrt1"]
 length = 0.001
@@ -418,15 +419,18 @@ _data = {
 }
 
 [node name="VfxLayer" type="CanvasLayer"]
-script = ExtResource("1_4o6fi")
+script = ExtResource("1_ussoy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_6lxhd")
 }
 
-[node name="Portal" parent="." instance=ExtResource("1_kvldp")]
+[node name="Portal" parent="." instance=ExtResource("2_jvqa2")]
 process_mode = 4
 visible = false
 light_mask = 2
 visibility_layer = 2
+
+[node name="Text" parent="." instance=ExtResource("3_sxkib")]
+visible = false
