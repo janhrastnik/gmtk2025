@@ -32,12 +32,10 @@ starting_loop_position = Vector2(48, 48)
 
 [node name="Reset Rock" parent="Demo Level" instance=ExtResource("4_g3f5c")]
 position = Vector2(84, 36)
-level_name = "gate_demo"
 
 [node name="GateOneReq - Reset" parent="Demo Level" instance=ExtResource("5_3p1co")]
 position = Vector2(120, 60)
 event_name = "reset_gate"
-level_name = "gate_demo"
 
 [node name="ResetPressurePlate" parent="Demo Level" instance=ExtResource("6_6nkdi")]
 position = Vector2(84, 60)
@@ -53,7 +51,6 @@ event_name = "loop_gate"
 [node name="GateOneReq - Loop" parent="Demo Level" instance=ExtResource("5_3p1co")]
 position = Vector2(120, 24)
 event_name = "loop_gate"
-level_name = "gate_demo"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_t5yh1")
