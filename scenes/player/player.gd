@@ -6,7 +6,8 @@ var can_move_down = true
 var can_move_left = true
 var can_move_right = true
 
-var can_reset = false
+@export var can_reset = false
+@export var can_loop = true
 
 var starting_level_position = Vector2.ZERO
 @export var starting_loop_position: Vector2 = Vector2.ZERO
@@ -116,7 +117,7 @@ func _input(event: InputEvent) -> void:
 
 		reset_level()
 	
-	if event.is_action_pressed("loop"):
+	if event.is_action_pressed("loop") and can_loop:
 		vfx.play_loop_animation()
 		await get_tree().create_timer(1).timeout
 		
