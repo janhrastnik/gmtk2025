@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 		# we need to do this in a physics frame, otherwise
 		# area2d.get_overlapping_areas returns empty list
 		# at the start of the game
-		print("doing checks")
+		# print("doing checks")
 		check_collisions()
 		check_for_objects()
 		do_checks = false

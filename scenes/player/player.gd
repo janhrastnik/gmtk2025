@@ -31,6 +31,7 @@ var should_check_camera_edge_case = false
 @onready var debug_ui: CanvasLayer = $"Debug UI"
 @onready var camera: Camera2D = $Camera2D
 @onready var step_timer: Timer = $"Step Timer"
+@onready var vfx: VfxLayer = $VfxLayer
 
 func _ready() -> void:
 	check_collisions()
@@ -103,9 +104,16 @@ func move_event(move_vector):
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset"):
+		vfx.play_reset_animation()
+		# wait for the animation to do its thing
+		await get_tree().create_timer(1).timeout
+
 		reset_level()
 	
 	if event.is_action_pressed("loop"):
+		vfx.play_loop_animation()
+		await get_tree().create_timer(1).timeout
+		
 		GameData.loop_events.emit()
 	
 	if event.is_action_pressed("camera_toggle"):

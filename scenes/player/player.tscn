@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc3m1hfr3sfhn"]
+[gd_scene load_steps=7 format=3 uid="uid://dc3m1hfr3sfhn"]
 
 [ext_resource type="Texture2D" uid="uid://05hmaqgswvvc" path="res://assets/characters/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://r7tpb3svxai8" path="res://scenes/player/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://bx7m54ote1amk" path="res://scenes/player/sound_module.tscn" id="2_gmlin"]
 [ext_resource type="Shape2D" uid="uid://codfshabux0ix" path="res://resources/detect_shape.tres" id="4_lvxji"]
+[ext_resource type="PackedScene" uid="uid://dippuq3llbmyu" path="res://scenes/vfx/vfx_layer.tscn" id="5_p47bc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(10, 10)
@@ -51,6 +52,6 @@ shape = SubResource("RectangleShape2D_qhqgy")
 [node name="Step Timer" type="Timer" parent="."]
 wait_time = 0.2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="VfxLayer" parent="." instance=ExtResource("5_p47bc")]
 
 [connection signal="timeout" from="Step Timer" to="." method="_on_step_timer_timeout"]
