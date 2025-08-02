@@ -48,7 +48,7 @@ remove_camera = true
 level_shape = SubResource("RectangleShape2D_ncipp")
 
 [node name="Loop Rock" parent="Level 1" instance=ExtResource("5_cpv22")]
-position = Vector2(132, 36)
+position = Vector2(108, 12)
 
 [node name="Reset Rock" parent="Level 1" instance=ExtResource("6_qdn77")]
 position = Vector2(120, 72)
@@ -88,3 +88,6 @@ level_shape = SubResource("RectangleShape2D_0tvgu")
 [node name="LevelArea" parent="." instance=ExtResource("5_ncipp")]
 position = Vector2(-240, -12)
 level_shape = SubResource("RectangleShape2D_wia3t")
+
+[node name="Reset Rock2" parent="." instance=ExtResource("6_qdn77")]
+position = Vector2(108, 72)
