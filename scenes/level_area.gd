@@ -57,6 +57,9 @@ func find_level_objects():
 		print("found overlapping area")
 		print(parent)
 		
+		if parent is Rock:
+			parent.do_checks = true
+		
 		if parent is ResetRock:
 			level_objects.append(parent)
 	
@@ -68,6 +71,10 @@ func reset_level_objects():
 		# a bit fucky because this is dynamic
 		# we don't exactly know what the object is and if it has reset_state() call
 		object.reset_state()
+	
+	for object in level_objects:
+		if object is Rock:
+			object.do_checks = true
 
 func switch_level_area(player: Player):
 		# print("emited")
