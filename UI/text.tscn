@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://keufu2408sp4"]
+
+[ext_resource type="Texture2D" uid="uid://xn5toh5f7e1o" path="res://assets/textbox.png" id="1_5doxo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2g36n"]
+texture = ExtResource("1_5doxo")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[node name="Text" type="Label"]
+z_index = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "This is some cool text."
+
+[node name="ColorRect" type="PanelContainer" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -2.0
+offset_right = 5.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2g36n")

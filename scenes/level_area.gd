@@ -41,13 +41,21 @@ func _on_area_entered(area: Area2D) -> void:
 			switch_level_area(player)
 		else:
 			player.next_level = self
+		
+		#print("AREA ENTERED")
+		#print("current_level: ", player.current_level)
+		#print("next_level: ", player.next_level)
 
 func _on_area_exited(area: Area2D) -> void:
 	if player:
 		if player.next_level and player.current_level == self:
 			player.next_level.switch_level_area(player)
+		player.should_check_camera_edge_case = true
 
-			
+		#print("AREA EXITED")
+		#print("current_level: ", player.current_level)
+		#print("next_level: ", player.next_level)
+				
 func find_level_objects():
 	# We find objects that belong to this level. We do this so that when the player
 	# hits reset in a level, we know which objects to reset
@@ -97,6 +105,9 @@ func switch_level_area(player: Player):
 		player.current_level = self
 		player.set_starting_level_position(player.position)
 		GameData.camera_move_events.emit(position, level_shape.size)
+		
+		if player.current_level == player.next_level:
+			player.next_level = null
 
 		# we didn't really need to find objects til now
 		if not has_fetched_objects:

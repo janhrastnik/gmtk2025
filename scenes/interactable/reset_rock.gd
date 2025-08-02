@@ -8,7 +8,7 @@ var starting_position: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	super._ready()
 	
-	starting_position = position
+	starting_position = global_position
 
 func reset_state():
-	position = starting_position
+	global_position = starting_position

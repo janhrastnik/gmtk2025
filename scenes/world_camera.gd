@@ -27,30 +27,37 @@ func adjust_camera_to_level(level_position: Vector2, level_size: Vector2):
 	var y_coef = 648/level_size.y
 	
 	# get_window().set_content_scale_aspect(2)
-	var og_ratio = 1152/648
+	var og_ratio = 1152.0/648.0
 	var ratio = level_size.x / level_size.y
-	# print(ratio)
-	if ratio < og_ratio:
-		get_window().set_content_scale_aspect(2)
+	#print(og_ratio)
+	#print(ratio)
+	#print(Vector2(x_coef, y_coef))
+	if ratio <= og_ratio:
+		#print("RATIO SMALLER")
+		get_window().set_content_scale_aspect(2) # KEEP WIDTH
 		get_window().content_scale_size = level_size * y_coef
-	else:
-		get_window().set_content_scale_aspect(3)
+	elif ratio > og_ratio:
+		#print("RATIO LARGER")
+		get_window().set_content_scale_aspect(3) # KEEP HEIGHT
 		get_window().content_scale_size = level_size * x_coef
 
 	if level_size.x > 192 or level_size.y > 108:
-		if level_size.x > level_size.y:
-			camera.zoom = Vector2(x_coef, x_coef)
-		else:
-			camera.zoom = Vector2(y_coef, y_coef)
-		get_window().set_content_scale_aspect(1)
+		# get_window().set_content_scale_aspect(1)
+			if level_size.x/1152.0 > level_size.y/648.0:
+				camera.zoom = Vector2(x_coef, x_coef)
+			else:
+				camera.zoom = Vector2(y_coef, y_coef)
+
 	else:
 		camera.zoom = Vector2(6, 6)
+	
+	#print(camera.zoom)
 	
 	# get_window().set_content_scale_mode(1)	
 	# get_viewport().size = Vector2(400.0, 400.0)
 	
 	#get_window().content_scale_size = Vector2(400.0, 628.0)
 	
-	camera.position = level_position
+	camera.global_position = level_position
 	camera.offset = level_size/2
 	#camera.zoom = Vector2(x_coef, y_coef)
