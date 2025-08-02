@@ -98,8 +98,6 @@ func move_rock(pl: Player):
 		global_position += Vector2(12.0, 0)
 		pl.global_position += Vector2(12.0, 0)
 	
-	print(object_left)
-	
 	do_checks = true
 
 func check_for_objects():

@@ -6,6 +6,9 @@ var can_move_down = true
 var can_move_left = true
 var can_move_right = true
 
+@export var can_reset = false
+@export var can_loop = false
+
 var starting_level_position = Vector2.ZERO
 @export var starting_loop_position: Vector2 = Vector2.ZERO
 @export var remove_camera = false
@@ -77,7 +80,6 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_pressed("left") and can_move_left:
 		sprite.flip_h = true
 		if object_left is Rock:
-			print("left rock push")
 			object_left.move_rock(self)
 			sound_module.play_push_sound()
 		else:
@@ -107,22 +109,29 @@ func move_event(move_vector):
 	
 	sound_module.play_bonk_sound_maybe(move_vector)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("reset"):
-		vfx.play_reset_animation()
-		sound_module.play_reset_sound()
-		# wait for the animation to do its thing
-		await get_tree().create_timer(1).timeout
+func trigger_reset() -> void:
+	vfx.play_reset_animation()
+	sound_module.play_reset_sound()
 
-		reset_level()
+	# wait for the animation to do its thing
+	await get_tree().create_timer(1).timeout
+
+	reset_level()
+
+func trigger_loop() -> void:
+	vfx.play_loop_animation()
+	sound_module.play_loop_sound()
+
+	await get_tree().create_timer(1).timeout
 	
-	if event.is_action_pressed("loop"):
-		vfx.play_loop_animation()
-		sound_module.play_loop_sound()
-		
-		await get_tree().create_timer(1).timeout
-		
-		GameData.loop_events.emit()
+	GameData.loop_events.emit()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("reset") and can_reset:
+		trigger_reset()
+	
+	if event.is_action_pressed("loop") and can_loop:
+		trigger_loop()
 	
 	if event.is_action_pressed("camera_toggle"):
 		# print("foo")
