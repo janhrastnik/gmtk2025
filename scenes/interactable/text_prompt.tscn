@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqyh326ddfrxo"]
+
+[ext_resource type="PackedScene" uid="uid://keufu2408sp4" path="res://UI/text.tscn" id="1_i2eyd"]
+
+[node name="TextPrompt" type="Node2D"]
+
+[node name="Text" parent="." instance=ExtResource("1_i2eyd")]
+
+[node name="Area2D" type="Area2D" parent="."]
