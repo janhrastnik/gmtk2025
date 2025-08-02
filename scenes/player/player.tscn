@@ -9,6 +9,7 @@
 size = Vector2(10, 10)
 
 [node name="Player" type="Node2D"]
+z_index = 1
 script = ExtResource("1_g2els")
 
 [node name="SoundModule" parent="." instance=ExtResource("2_gmlin")]
@@ -30,7 +31,7 @@ shape = ExtResource("4_lvxji")
 
 [node name="Object Interact" type="Area2D" parent="."]
 collision_layer = 7
-collision_mask = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object Interact"]
 position = Vector2(6, 6)

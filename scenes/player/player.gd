@@ -23,7 +23,10 @@ var object_down = null
 var object_left = null
 var object_right = null
 
+var should_check_camera_edge_case = false
+
 @onready var object_detect_area: Area2D = $"Object Detect"
+@onready var object_interact_area: Area2D = $"Object Interact"
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var debug_ui: CanvasLayer = $"Debug UI"
 @onready var camera: Camera2D = $Camera2D
@@ -59,6 +62,7 @@ func _physics_process(delta: float) -> void:
 			position.y -= 12
 			sound_module.play_step_sound()
 		step_timer.start()
+		should_check_camera_edge_case = true
 	elif Input.is_action_pressed("down") and can_move_down:
 		if object_down is Rock:
 			object_down.move_rock(self)
@@ -66,6 +70,7 @@ func _physics_process(delta: float) -> void:
 			position.y += 12
 			sound_module.play_step_sound()
 		step_timer.start()
+		should_check_camera_edge_case = true
 	elif Input.is_action_pressed("left") and can_move_left:
 		sprite.flip_h = true
 		if object_left is Rock:
@@ -74,6 +79,7 @@ func _physics_process(delta: float) -> void:
 			position.x -= 12
 			sound_module.play_step_sound()
 		step_timer.start()
+		should_check_camera_edge_case = true
 	elif Input.is_action_pressed("right") and can_move_right:
 		sprite.flip_h = false
 		if object_right is Rock:
@@ -82,7 +88,11 @@ func _physics_process(delta: float) -> void:
 			position.x += 12
 			sound_module.play_step_sound()
 		step_timer.start()
-		
+		should_check_camera_edge_case = true
+	
+	if should_check_camera_edge_case:
+		camera_edge_case_check()
+		should_check_camera_edge_case = false
 	
 func move_event(move_vector):
 	check_collisions()
@@ -104,7 +114,7 @@ func _input(event: InputEvent) -> void:
 			camera.enabled = false
 			if GameData.world_camera:
 				GameData.world_camera.camera.enabled = true
-				GameData.world_camera.adjust_camera_to_level(current_level.position, current_level.level_shape.size)
+				GameData.world_camera.adjust_camera_to_level(current_level.global_position, current_level.level_shape.size)
 		else:
 			camera.enabled = true
 			camera.zoom = Vector2(6, 6)
@@ -184,3 +194,17 @@ func _on_step_timer_timeout() -> void:
 
 func set_starting_level_position(pos: Vector2):
 	starting_level_position = pos
+
+func camera_edge_case_check():
+	# if we are standing in only one level area, just switch the camera to that level area
+	
+	# list of references to the level areas
+	var level_areas = []
+	
+	for area in object_interact_area.get_overlapping_areas():
+		if area is LevelArea:
+			level_areas.append(area)
+
+	if len(level_areas) == 1 and current_level != level_areas[0]:
+		# just switch the camera to the only level area we are in
+		level_areas[0].switch_level_area(self)
