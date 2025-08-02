@@ -45,7 +45,7 @@ func _ready() -> void:
 	starting_level_position = position
 	
 	# debug mode
-	debug_ui.visible = true
+	#debug_ui.visible = true
 	
 	if remove_camera:
 		camera.enabled = false
@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 		if object_up is Rock:
 			object_up.move_rock(self)
 			sound_module.play_push_sound()
-		else:
+		elif object_up is not GateOneReq:
 			# normal move
 			position.y -= 12
 			sound_module.play_step_sound()
@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 		if object_down is Rock:
 			object_down.move_rock(self)
 			sound_module.play_push_sound()
-		else:
+		elif object_down is not GateOneReq:
 			position.y += 12
 			sound_module.play_step_sound()
 		step_timer.start()
@@ -89,7 +89,7 @@ func _physics_process(delta: float) -> void:
 		if object_left is Rock:
 			object_left.move_rock(self)
 			sound_module.play_push_sound()
-		else:
+		elif object_left is not GateOneReq:
 			position.x -= 12
 			sound_module.play_step_sound()
 		step_timer.start()
@@ -99,7 +99,7 @@ func _physics_process(delta: float) -> void:
 		if object_right is Rock:
 			object_right.move_rock(self)
 			sound_module.play_push_sound()
-		else:
+		elif object_right is not GateOneReq:
 			position.x += 12
 			sound_module.play_step_sound()
 		step_timer.start()

@@ -4,3 +4,4 @@ extends Node2D
 
 func _ready() -> void:
 	GameData.world_tilemap = tilemap
+	GameData.tilemap_loaded_event.emit()

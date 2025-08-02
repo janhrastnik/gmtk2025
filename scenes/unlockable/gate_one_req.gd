@@ -8,9 +8,10 @@ var is_closed = true
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
+	GameData.tilemap_loaded_event.connect(toggle_gate)
 	GameData.global_events.connect(gate_check)
 	# calling toggle_gate leads to a race condition with world_tilemap not being set
-	# toggle_gate()
+	#toggle_gate()
 
 func gate_check(received_event_name: String):
 	if event_name == received_event_name:
@@ -26,7 +27,7 @@ func gate_check(received_event_name: String):
 		toggle_gate()
 
 func toggle_gate():
-	var gate_coords = Vector2i(floor(position.x/12), floor(position.y/12)) 
+	var gate_coords = Vector2i(floor(global_position.x/12), floor(global_position.y/12)) 
 	
 	if is_closed:
 		# set the cell in the background to a wall
