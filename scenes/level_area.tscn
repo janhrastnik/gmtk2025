@@ -10,3 +10,4 @@ script = ExtResource("1_jx8di")
 position = Vector2(96, 54)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

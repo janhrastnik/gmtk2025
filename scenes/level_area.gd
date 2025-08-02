@@ -2,6 +2,9 @@
 class_name LevelArea
 extends Area2D
 
+# we hold a player reference
+var player: Player = null
+
 @export var level_shape: RectangleShape2D:
 	set(new_shape):
 		level_shape = new_shape
@@ -33,14 +36,17 @@ func _on_shape_changed():
 func _on_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Player:
-		# print("emited")
-		parent.current_level = self
-		parent.set_starting_level_position(parent.position)
-		GameData.camera_move_events.emit(position, level_shape.size)
-		
-		# we didn't really need to find objects til now
-		if not has_fetched_objects:
-			should_fetch_objects = true
+		player = parent
+		if not player.current_level:
+			switch_level_area(player)
+		else:
+			player.next_level = self
+
+func _on_area_exited(area: Area2D) -> void:
+	if player:
+		if player.next_level and player.current_level == self:
+			player.next_level.switch_level_area(player)
+
 			
 func find_level_objects():
 	# We find objects that belong to this level. We do this so that when the player
@@ -62,3 +68,13 @@ func reset_level_objects():
 		# a bit fucky because this is dynamic
 		# we don't exactly know what the object is and if it has reset_state() call
 		object.reset_state()
+
+func switch_level_area(player: Player):
+		# print("emited")
+		player.current_level = self
+		player.set_starting_level_position(player.position)
+		GameData.camera_move_events.emit(position, level_shape.size)
+		
+		# we didn't really need to find objects til now
+		if not has_fetched_objects:
+			should_fetch_objects = true
