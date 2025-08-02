@@ -16,7 +16,9 @@ var detect_shape = preload("res://resources/detect_shape.tres")
 
 var object_detect_area: Area2D = Area2D.new()
 
-var first_check = false
+var do_checks = false
+
+var should_check_for_overlaps = false
 
 func _init() -> void:
 	object_detect_area.position = Vector2(6.0, 6.0)
@@ -30,11 +32,19 @@ func _ready() -> void:
 	check_collisions()
 	
 func _physics_process(delta: float) -> void:
-	if not first_check:
+	if do_checks:
 		# we need to do this in a physics frame, otherwise
 		# area2d.get_overlapping_areas returns empty list
 		# at the start of the game
+		check_collisions()
 		check_for_objects()
+		do_checks = false
+	elif should_check_for_overlaps:
+		# either we just looped a loop rock and we need to check if it overlaps with a reset rock
+		# or we just reseted one such reset rock, and we are checking if it overlaps with another reset rock
+		
+		check_for_overlaps()
+		should_check_for_overlaps = false
 
 func check_collisions():
 	if GameData.world_tilemap:
@@ -113,3 +123,12 @@ func check_for_objects():
 			object_left = parent
 		elif parent.global_position == global_position + Vector2(12.0, 0):
 			object_right = parent
+
+func check_for_overlaps():
+	print("overlaps check")
+	for area in $Area2D.get_overlapping_areas():
+		var parent = area.get_parent()
+		if parent is ResetRock:
+			parent.reset_state()
+			parent.do_checks = true
+			parent.should_check_for_overlaps = true

@@ -40,7 +40,7 @@ tile_map_data = PackedByteArray("AAD9/wEAAQAAAAcAAAD+/wEAAQAAAAcAAAD//wEAAQABAAQ
 tile_set = ExtResource("1_b3gnw")
 
 [node name="Player" parent="TileMapLayer" instance=ExtResource("2_7ap43")]
-position = Vector2(-72, 0)
+position = Vector2(912, -144)
 starting_loop_position = Vector2(864, -108)
 
 [node name="front_gate" type="Node" parent="."]
