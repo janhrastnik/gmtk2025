@@ -42,6 +42,8 @@ tile_set = ExtResource("1_y1h7x")
 
 [node name="Player" parent="." instance=ExtResource("2_ufhsu")]
 position = Vector2(60, 60)
+can_reset = true
+can_loop = true
 starting_loop_position = Vector2(48, 48)
 remove_camera = true
 
