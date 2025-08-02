@@ -58,6 +58,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("up") and can_move_up:
 		if object_up is Rock:
 			object_up.move_rock(self)
+			sound_module.play_push_sound()
 		else:
 			# normal move
 			position.y -= 12
@@ -67,6 +68,7 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_pressed("down") and can_move_down:
 		if object_down is Rock:
 			object_down.move_rock(self)
+			sound_module.play_push_sound()
 		else:
 			position.y += 12
 			sound_module.play_step_sound()
@@ -76,6 +78,7 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = true
 		if object_left is Rock:
 			object_left.move_rock(self)
+			sound_module.play_push_sound()
 		else:
 			position.x -= 12
 			sound_module.play_step_sound()
@@ -85,6 +88,7 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = false
 		if object_right is Rock:
 			object_right.move_rock(self)
+			sound_module.play_push_sound()
 		else:
 			position.x += 12
 			sound_module.play_step_sound()
