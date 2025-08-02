@@ -36,7 +36,7 @@ script = ExtResource("1_4haap")
 visible = false
 
 [node name="Player" parent="." instance=ExtResource("2_7ap43")]
-position = Vector2(780, 0)
+position = Vector2(888, 0)
 starting_loop_position = Vector2(864, -108)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

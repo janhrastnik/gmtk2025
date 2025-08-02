@@ -24,6 +24,8 @@ func _init() -> void:
 	object_detect_area.position = Vector2(6.0, 6.0)
 	var col_shape: CollisionShape2D = CollisionShape2D.new()
 	col_shape.shape = detect_shape
+	# sadly this fucks up collisions
+	# object_detect_area.set_collision_layer_value(1, false)
 	object_detect_area.add_child(col_shape)
 	add_child(object_detect_area)
 	
@@ -36,6 +38,7 @@ func _physics_process(delta: float) -> void:
 		# we need to do this in a physics frame, otherwise
 		# area2d.get_overlapping_areas returns empty list
 		# at the start of the game
+		print("doing checks")
 		check_collisions()
 		check_for_objects()
 		do_checks = false
@@ -81,26 +84,25 @@ func check_collisions():
 				can_move_right = true
 
 func move_rock(pl: Player):
-	if global_position == pl.position - Vector2(0, 12.0) and can_move_up and not object_up:
+	if global_position == pl.global_position - Vector2(0, 12.0) and can_move_up and not object_up:
 		# player is below rock
 		global_position -= Vector2(0, 12.0)
-		pl.position -= Vector2(0, 12.0)
+		pl.global_position -= Vector2(0, 12.0)
 		$AudioStreamPlayer.play()
-	elif global_position == pl.position + Vector2(0, 12.0) and can_move_down and not object_down:
+	elif global_position == pl.global_position + Vector2(0, 12.0) and can_move_down and not object_down:
 		global_position += Vector2(0, 12.0)
-		pl.position += Vector2(0, 12.0)
+		pl.global_position += Vector2(0, 12.0)
 		$AudioStreamPlayer.play()
-	elif global_position == pl.position - Vector2(12.0, 0) and can_move_left and not object_left:
+	elif global_position == pl.global_position - Vector2(12.0, 0) and can_move_left and not object_left:
 		global_position -= Vector2(12.0, 0)
-		pl.position -= Vector2(12.0, 0)
+		pl.global_position -= Vector2(12.0, 0)
 		$AudioStreamPlayer.play()
-	elif global_position == pl.position + Vector2(12.0, 0) and can_move_right and not object_right:
+	elif global_position == pl.global_position + Vector2(12.0, 0) and can_move_right and not object_right:
 		global_position += Vector2(12.0, 0)
-		pl.position += Vector2(12.0, 0)
+		pl.global_position += Vector2(12.0, 0)
 		$AudioStreamPlayer.play()
 	
-	check_collisions()
-	check_for_objects()
+	do_checks = true
 
 func check_for_objects():
 	object_up = false
@@ -117,15 +119,23 @@ func check_for_objects():
 		
 		if parent.global_position == global_position - Vector2(0, 12.0):
 			object_up = parent
+			if parent is Rock:
+				parent.object_down = self
 		elif parent.global_position == global_position + Vector2(0, 12.0):
 			object_down = parent
+			if parent is Rock:
+				parent.object_up = self
 		elif parent.global_position == global_position - Vector2(12.0, 0):
 			object_left = parent
+			if parent is Rock:
+				parent.object_right = self
 		elif parent.global_position == global_position + Vector2(12.0, 0):
 			object_right = parent
+			if parent is Rock:
+				parent.object_left = self
 
 func check_for_overlaps():
-	print("overlaps check")
+	# print("overlaps check")
 	for area in $Area2D.get_overlapping_areas():
 		var parent = area.get_parent()
 		if parent is ResetRock:
