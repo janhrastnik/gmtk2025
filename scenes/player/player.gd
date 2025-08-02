@@ -6,6 +6,8 @@ var can_move_down = true
 var can_move_left = true
 var can_move_right = true
 
+var can_reset = false
+
 var starting_level_position = Vector2.ZERO
 @export var starting_loop_position: Vector2 = Vector2.ZERO
 @export var remove_camera = false
@@ -107,7 +109,7 @@ func move_event(move_vector):
 	sound_module.play_bonk_sound_maybe(move_vector)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("reset"):
+	if event.is_action_pressed("reset") and can_reset:
 		vfx.play_reset_animation()
 		# wait for the animation to do its thing
 		await get_tree().create_timer(1).timeout
