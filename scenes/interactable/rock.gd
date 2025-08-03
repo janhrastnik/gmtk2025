@@ -98,6 +98,18 @@ func move_rock(pl: Player):
 		global_position += Vector2(12.0, 0)
 		pl.global_position += Vector2(12.0, 0)
 	
+	# other rocks should know of the change
+	if object_up is Rock:
+		object_up.do_checks = true
+	if object_down is Rock:
+		object_down.do_checks = true
+	if object_left is Rock:
+		object_left.do_checks = true
+	if object_right is Rock:
+		object_right.do_checks = true
+	
+
+
 	do_checks = true
 
 func check_for_objects():
