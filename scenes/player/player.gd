@@ -20,6 +20,12 @@ var current_level: LevelArea = null
 # reference to the level_area that the player is entering
 var next_level: LevelArea = null
 
+var reset_count = 0
+
+var loop_count = 0
+
+var is_animating = false
+
 # references to objects player can interact with
 var object_up = null
 var object_down = null
@@ -117,6 +123,10 @@ func move_event(move_vector):
 	sound_module.play_bonk_sound_maybe(move_vector)
 
 func trigger_reset() -> void:
+	is_animating = true
+	
+	reset_count += 1
+	
 	vfx.play_reset_animation()
 	sound_module.play_reset_sound()
 
@@ -125,7 +135,20 @@ func trigger_reset() -> void:
 
 	reset_level()
 
+	await get_tree().create_timer(1).timeout
+	
+	if reset_count == 1:
+		GameData.prompt_events.emit("Woah! It's that warp thing but.. different?")
+		await get_tree().create_timer(3).timeout
+		GameData.prompt_events.emit("I didn't end up at the entrance this time")
+
+	is_animating = false
+
 func trigger_loop() -> void:
+	is_animating = true
+	
+	loop_count += 1
+	
 	vfx.play_loop_animation()
 	sound_module.play_loop_sound()
 
@@ -137,8 +160,21 @@ func trigger_loop() -> void:
 	# man idk, i think we gotta wait this one out
 	
 	GameData.global_events.emit("looped_state_post_check")
+	
+	if loop_count == 2:
+		GameData.prompt_events.emit("I'm back here? How? And that odd sensation again..")
+
+	if loop_count == 3:
+		GameData.prompt_events.emit("It happened again! I was just resting and now I'm here again")
+
+	if loop_count == 4:
+		GameData.prompt_events.emit("Seems like when enough time passes I get thrown back here")
+
+	is_animating = false
 
 func _input(event: InputEvent) -> void:
+	if is_animating:
+		return
 	if event.is_action_pressed("reset") and can_reset:
 		trigger_reset()
 	
@@ -158,6 +194,13 @@ func _input(event: InputEvent) -> void:
 			get_window().content_scale_size = Vector2(1152, 648)
 			if GameData.world_camera:
 				GameData.world_camera.camera.enabled = false
+	
+	if GameData.world_tilemap:
+		var pl_coords = Vector2i(floor(position.x/12), floor(position.y/12))
+		var current_tile = GameData.world_tilemap.get_cell_tile_data(pl_coords)
+		
+		if current_tile.get_custom_data("rest_prompt"):
+			GameData.prompt_events.emit(" Rest for a long time [L] ")
 
 func check_collisions():
 	if GameData.world_tilemap:
@@ -224,7 +267,6 @@ func loopback_player():
 	position = starting_loop_position
 	check_collisions()
 	check_for_objects()
-
 
 func _on_step_timer_timeout() -> void:
 	step_timer.stop()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cexi6aq2u2acm"]
+[gd_scene load_steps=19 format=4 uid="uid://dbypxslkkejg2"]
 
 [ext_resource type="Script" uid="uid://cxm3xuds688x4" path="res://scenes/room_resolution_test.gd" id="1_23qa2"]
 [ext_resource type="TileSet" uid="uid://cded1nikcxtrf" path="res://resources/urizen_tile_set.tres" id="1_y1h7x"]
