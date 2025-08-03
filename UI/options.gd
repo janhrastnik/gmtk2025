@@ -17,7 +17,8 @@ func _input(event: InputEvent) -> void:
 		self.visible = not self.visible
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://UI/main_menu.tscn")
+	#get_tree().change_scene_to_file("res://UI/main_menu.tscn")
+	self.hide()
 
 
 func _on_music_slider_value_changed(value: float) -> void:
