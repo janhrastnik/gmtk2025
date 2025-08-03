@@ -121,6 +121,7 @@ script = ExtResource("1_4haap")
 
 [node name="Player" parent="." instance=ExtResource("2_7ap43")]
 position = Vector2(-72, 0)
+starting_loop_position = Vector2(-72, 0)
 remove_camera = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -473,14 +474,6 @@ level_shape = SubResource("RectangleShape2D_k7iv0")
 position = Vector2(48, 12)
 text = "Gates ahead!"
 
-[node name="TextPrompt" parent="Upper Chambers/Upper Chamber 4" instance=ExtResource("12_wgcc6")]
-position = Vector2(204, -24)
-text = "Next three computers are lying."
-
-[node name="TextPrompt3" parent="Upper Chambers/Upper Chamber 4" instance=ExtResource("12_wgcc6")]
-position = Vector2(480, -24)
-text = "The computer before was telling the truth!"
-
 [node name="Upper Chamber 5" parent="Upper Chambers" instance=ExtResource("11_jrvd7")]
 position = Vector2(1272, -420)
 level_shape = SubResource("RectangleShape2D_lpfeu")
@@ -506,6 +499,10 @@ position = Vector2(24, 36)
 
 [node name="Loop Rock2" parent="Upper Chambers/Upper Chamber 5" instance=ExtResource("3_7rx86")]
 position = Vector2(36, 96)
+
+[node name="TextPrompt" parent="Upper Chambers/Upper Chamber 5" instance=ExtResource("12_wgcc6")]
+position = Vector2(108, 12)
+text = "Next three computers are lying."
 
 [node name="Upper Chamber 6" parent="Upper Chambers" instance=ExtResource("11_jrvd7")]
 position = Vector2(1440, -420)
@@ -666,6 +663,10 @@ event_name = "upper-chamber-7-2"
 [node name="GateOneReq2" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("9_24gry")]
 position = Vector2(144, 0)
 event_name = "upper-chamber-7-1"
+
+[node name="TextPrompt3" parent="Upper Chambers/Upper Chamber 7" instance=ExtResource("12_wgcc6")]
+position = Vector2(48, 12)
+text = "The computer before was telling the truth!"
 
 [node name="Upper Chamber 8" parent="Upper Chambers" instance=ExtResource("11_jrvd7")]
 position = Vector2(1728, -564)
